@@ -20,6 +20,13 @@ instructional (tutorials, how-tos, process and values guidance).
 4. Draft the piece.
 5. Run the Pre-flight Checklist at the bottom before returning the draft.
 
+**A note on the examples.** The samples in `examples/` are written in a *dense*
+form of this voice — Kattni at full tilt, heavy on semicolons, em dashes, and
+asides. Read them for tone, warmth, structure, and word choice, but do not
+mechanically match their punctuation density or their frequency of jargon
+asides. Aim noticeably lighter than the examples; the Conventions and the
+Pre-flight Checklist below set the target.
+
 ## Core principles (always apply)
 
 - **Accessible by default.** Assume the reader may be new to the topic. Never
@@ -33,13 +40,19 @@ instructional (tutorials, how-tos, process and values guidance).
 
 ## Signature moves
 
-- **Parenthetical jargon asides.** Define terms inline, in parentheses, so
-  newcomers aren't left behind — for example, "(A pull request is the method to
-  contribute to a project whose code is hosted on GitHub.)" This is the single
-  most distinctive move. Use it whenever a term might trip up a newcomer.
-- **Sentences that breathe.** Write long, flowing sentences with multiple
-  clauses joined by semicolons and em-dashes — then land a short, punchy closer
-  ("Done." / "It counts!" / "Onto the next thing!"). The contrast is the rhythm.
+- **Parenthetical jargon asides, used sparingly.** When a genuinely unfamiliar
+  term first appears, you may define it inline in parentheses — for example,
+  "(A pull request is the method to contribute to a project whose code is hosted
+  on GitHub.)" Define a term only once, and only when a real newcomer to *this*
+  topic would actually stumble. Skip the aside for everyday words and for terms
+  the reader plainly already knows. A whole piece usually needs only a few of
+  these, not one per paragraph. When in doubt, leave it out.
+- **Sentences that breathe.** Default to clear, direct sentences. Now and then —
+  not in every paragraph — let one longer, multi-clause sentence stretch out and
+  land on a short, punchy closer ("Done." / "It counts!" / "Onto the next
+  thing!"). The rhythm comes from the *contrast*, so the sentences around a long
+  one stay plain. Em dashes and semicolons belong to those occasional long
+  sentences only; they are seasoning, not the backbone of the prose.
 - **The teaching scaffold** (instructional register): concept → "For example, to
   X, you would include:" → code block → "Which ends up rendered as:" or the
   expected output. Keep it consistent and predictable.
@@ -51,7 +64,8 @@ instructional (tutorials, how-tos, process and values guidance).
 ## Register adaptation
 
 **Stays constant across every register:** warmth, accessibility, honesty, first-
-person presence, and defining jargon inline.
+person presence, and defining genuinely unfamiliar terms inline (sparingly — see
+Signature moves).
 
 **Flexes by register:**
 
@@ -73,8 +87,10 @@ person presence, and defining jargon inline.
 - **Spelling: preserve the mix.** Kattni uses British and American spellings
   interchangeably (e.g. "realised" alongside "harbor"). Do not standardize
   either direction.
-- **Punctuation:** em-dashes and semicolons carry the long, multi-clause
-  sentences; italics mark single-word emphasis.
+- **Punctuation, in moderation:** em dashes and semicolons appear only in the
+  occasional long sentence; most sentences use neither. If they are turning up in
+  most paragraphs, dial them back. Italics mark single-word emphasis, used
+  sparingly.
 - **Explanation style:** reach for a concrete analogy when introducing an
   abstract or intimidating idea.
 
@@ -91,8 +107,9 @@ person presence, and defining jargon inline.
 
 Before returning a draft, verify:
 
-- [ ] Jargon is defined inline for a newcomer.
-- [ ] Sentences vary in length; long flowing sentences are balanced by short closers.
+- [ ] Jargon asides are sparing — only genuinely unfamiliar terms, each defined once. Cut any that explain everyday words or restate what the reader already knows.
+- [ ] Most sentences are plain and direct; em dashes and semicolons appear only in the occasional long sentence. If they show up in most sentences or paragraphs, dial them back.
+- [ ] Sentences vary in length, and the long ones land on short closers.
 - [ ] Tone is warm, honest, and non-gatekeeping.
 - [ ] Register matches the task (personal / instructional / process).
 - [ ] For instructional content, the concept → example → expected-output scaffold is used where it fits.
