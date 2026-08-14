@@ -2,7 +2,7 @@
 
 ## Status
 
-DONE
+DONE_WITH_CONCERNS
 
 ## Selected sources
 
@@ -79,7 +79,9 @@ three semicolon punctuation marks.
   all existing.
 - Parsed `examples/README.md`: exactly the seven intended filenames, all
   existing.
-- `git diff --check`: passed with no whitespace errors.
+- `git diff --check HEAD~2..HEAD`: reports trailing whitespace inherited from
+  the official source text in both new examples. It is intentionally retained
+  because removing it would break the byte-for-byte fidelity checks.
 - Stale-reference scan for `intro-to-git-getting-started-with-git.md`: none.
 - `git status --short` before committing: only the five intended implementation
   changes were present.
@@ -93,5 +95,7 @@ Implementation commit: `a94b6ea5448fddfdbd65f4b5dcec73f23da3b394`
 
 Self-review found no scope drift: `SKILL.md` changes only the instructional
 example filenames, and `README.md` only changes the example inventory. Both
-new examples are full, unedited source copies. There are no outstanding
-concerns or source-fidelity limitations.
+new examples are full, unedited source copies. The sole concern is the
+intentional trailing whitespace inherited from the official source files,
+which `git diff --check` reports. Source fidelity takes precedence over
+normalising it.
