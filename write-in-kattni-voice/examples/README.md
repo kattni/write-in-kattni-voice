@@ -8,6 +8,7 @@ that match the register of the piece you are drafting.
 | `first-major-contribution.md` | Long personal narrative — vulnerability, inline jargon asides |
 | `firefox-is-enough-for-me.md` | Short opinion / practical — punchy "Done." closers |
 | `python-powered-eink-name-badge.md` | Hands-on tutorial — personal intro plus step-by-step teaching |
-| `intro-to-git-getting-started-with-git.md` | Rich teaching voice — analogies and a "Git will help you along the way" tone (long; the deep teaching reference) |
+| `enough-markdown-to-get-you-by-in-most-cases.md` | Markdown tutorial — approachable, concept-to-example teaching with rendered results |
+| `canary-nightlight.md` | Project tutorial — warm personal framing plus end-to-end build, code, and assembly guidance |
 | `scope-creep.md` | Concise conceptual explainer |
 | `review-pr.md` | Values / process — kind, THINK-style feedback register |

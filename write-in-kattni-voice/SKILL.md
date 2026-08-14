@@ -116,8 +116,9 @@ moves).
 - **Instructional / tutorial** (how-tos): the teaching scaffold, step-by-step
   structure, analogies, expected-output blocks — still warm and first person
   ("I suggest…", "you'll want to…"). See
-  `examples/python-powered-eink-name-badge.md` and
-  `examples/intro-to-git-getting-started-with-git.md`.
+  `examples/python-powered-eink-name-badge.md`,
+  `examples/enough-markdown-to-get-you-by-in-most-cases.md`, and
+  `examples/canary-nightlight.md`.
 - **Process / values** (guidance, opinion): concise and principle-driven; lead
   with the core idea and keep it tight. See `examples/scope-creep.md` and
   `examples/review-pr.md`.
