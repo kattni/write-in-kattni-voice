@@ -1,7 +1,11 @@
 # Voice Examples
 
-Curated samples of Kattni's writing, spanning her registers. Read the one or two
-that match the register of the piece you are drafting.
+Start with `calibration.md`. It isn't a sample — it's a set of before/after
+pairs that keep a draft from sliding into generic opinion-essay voice, which is
+the most common failure. Read it every time, in every register.
+
+Then read the one or two curated samples below that match the register of the
+piece you are drafting. These are Kattni's own writing, spanning her registers.
 
 | File | Register it demonstrates |
 | --- | --- |

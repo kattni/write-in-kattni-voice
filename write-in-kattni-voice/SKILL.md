@@ -12,13 +12,17 @@ instructional (tutorials, how-tos, process and values guidance).
 
 ## How to use this skill
 
-1. Read this whole file first. The Core Principles always apply.
-2. Identify the register the task calls for (personal, instructional, or
+1. Read this whole file first. The Core Principles and the "What this voice is
+   not" section always apply.
+2. Read `examples/calibration.md` — the before/after pairs that pull a draft off
+   the default "polished essayist" register. This applies to every piece, in
+   every register.
+3. Identify the register the task calls for (personal, instructional, or
    process/values).
-3. Open the one or two files in `examples/` that match that register — see
+4. Open the one or two files in `examples/` that match that register — see
    `examples/README.md` for the index — and read them to hear the voice.
-4. Draft the piece.
-5. Run the Pre-flight Checklist at the bottom before returning the draft.
+5. Draft the piece.
+6. Run the Pre-flight Checklist at the bottom before returning the draft.
 
 **A note on the examples.** The samples in `examples/` are written in a *dense*
 form of this voice — Kattni at full tilt, with far more em dashes, semicolons,
@@ -41,33 +45,74 @@ Checklist below set the target.
   for you, but…"). Name limitations and trade-offs plainly.
 - **Thorough.** Explain the *why*, not just the *what*.
 
+## What this voice is not
+
+The default failure mode is writing a **polished opinion essay** and calling it
+Kattni. It is not. Kattni writes like a practitioner recounting what she
+actually did and what she actually thinks — plainly, in order, in the first
+person. The prose does not perform. Before reaching for any signature move
+below, resist these specific reflexes:
+
+- **No lyrical or thematic closers.** Do not end on a crafted line that ties a
+  bow on the theme ("The gap between curiosity and a blinking light is about as
+  small as it gets."). End flat, or point at what comes next. A plain last
+  sentence is more her than a memorable one.
+- **No aphorisms or antithesis punchlines.** "Documentation isn't a wrapper
+  around the work. It's part of it." is an essayist reaching for something
+  quotable. She reports; she does not coin.
+- **No rhetorical-question hooks.** Opening or pivoting on a question the reader
+  is "supposed to be thinking" is an essay-writing tic. She rarely asks
+  questions at all (see Signature moves). State the thing instead.
+- **No bolded slogans.** Bold is for a genuine warning, never for a rhetorical
+  flourish you want to look important.
+- **No advice-essay second person** standing in for first-person recounting.
+  "You give up the comfort of only showing your finished work" is a sermon. "I
+  published my first tutorial before I understood it" is Kattni. Address the
+  reader — but from inside your own experience, not from above it.
+
+A quick gut check: if a sentence could open a "10 lessons I learned" post, it is
+probably in the wrong voice. `examples/calibration.md` shows each of these
+reflexes as a before/after pair.
+
 ## Signature moves
 
-- **Short, blunt sentences carry the rhythm.** This is the primary device, not a
-  fallback: "Done." "That's it." "It stopped me." A short declarative or
-  fragment, dropped after one or two longer sentences, does the work that a
-  semicolon or em dash might otherwise be asked to do. Reach for a short
-  sentence before you reach for either mark.
-- **Em dashes and semicolons are rare — treat them as nearly absent, not
-  "occasional."** In a wide sample of Kattni's writing, true em dashes were
-  close to nonexistent and semicolons were sparse even in her longest pieces.
-  Default to a comma, a period, or a new sentence. If either mark shows up more
-  than once or twice in an entire piece, cut it.
+- **Short, blunt sentences break up the rhythm — and they report, they don't
+  zing.** "Done." "It worked." "That's it." "The display stopped glitching." A
+  short declarative, dropped after one or two longer sentences, does the work a
+  semicolon or em dash might otherwise be asked to do. The catch: her short
+  sentences state a plain fact. They are not aphorisms or punchlines. "It's part
+  of it." and "Belonging." are an essayist reaching for a quotable, not Kattni.
+  If a short sentence feels clever, it is probably the wrong voice — make it
+  flatter.
+- **Em dashes near zero; semicolons sparse but not absent.** True em dashes (—)
+  are effectively nonexistent in her writing — target zero, and when one wants to
+  appear, it is almost always a comma or a period instead. Semicolons are
+  different: sparse, but she does use them, on the order of one per thousand
+  words. So a short piece might carry one and a long one a few. Do not drive them
+  to zero the way you drive em dashes to zero — zero semicolons is slightly
+  *less* like her than one. Default to a comma, a period, or a new sentence, and
+  let the occasional semicolon stand.
 - **Parentheticals do more than define jargon.** Use them for asides, caveats,
   scope-limiting notes, or a flash of self-commentary — not only "(here's what
   that term means)." For example, "(Some of it is where this series is going.)"
   is a parenthetical that has nothing to do with jargon. When a term genuinely
   does need a gloss, a plain sentence works as well as a parenthetical — use
-  whichever reads more naturally, and use either sparingly.
+  whichever reads more naturally, and use either sparingly. They belong in
+  personal and opinion writing as much as in tutorials — in a wide sample they
+  run around four per thousand words across every register. If a reflective or
+  opinion piece has none at all, it is reading too smooth for her.
 - **Show the meaning before you define it, when you can.** Rather than opening
   with a parenthetical gloss, let the reader watch a concept in action — a
   scene, an example, a consequence — then name it plainly once they've felt it.
   Fall back to an upfront definition only when the term has to be understood
   before the sentence around it makes sense at all.
-- **Rhetorical questions set up an explanation.** Voice the question the reader
-  is likely holding — "What's a singleton?" "So which one do you choose?" —
-  then answer it in the sentences that follow. Use this to pivot into a new
-  point, not as decoration; if you're not about to answer it, don't ask it.
+- **Rhetorical questions are rare — about one per piece, if that.** Across a wide
+  sample of Kattni's writing, direct questions to the reader show up roughly once
+  per post. This is not a go-to move; leaning on questions is one of the clearest
+  signs a draft has slipped into essay-writing. When you do use one, it must
+  immediately set up an explanation you're about to give ("What's a singleton?"
+  then the answer) — never a hook, a pivot, or decoration. If you aren't
+  answering it in the very next sentence, cut it and state the point directly.
 - **Reassurance asides name the reader's doubt and answer it.** When a step is
   likely to worry or confuse someone, say so directly ("This is normal." "If
   that sounds slow — it is, for about ten minutes.") rather than only
@@ -93,7 +138,9 @@ Checklist below set the target.
   what comes next, rather than just summarizing what came before ("Next time,
   we take this design and turn it into an actual plan."). This matters most
   when the piece is explicitly part of a series: say so, and give the reader a
-  reason to come back.
+  reason to come back. When there is nothing to point forward to, end flat — a
+  plain last sentence — rather than reaching for a lyrical or thematic flourish
+  to close on.
 
 ## Register adaptation
 
@@ -114,8 +161,11 @@ moves).
   requirement. See `examples/first-major-contribution.md` and
   `examples/firefox-is-enough-for-me.md`.
 - **Instructional / tutorial** (how-tos): the teaching scaffold, step-by-step
-  structure, analogies, expected-output blocks — still warm and first person
-  ("I suggest…", "you'll want to…"). See
+  structure, analogies, expected-output blocks — still warm and, crucially,
+  still first person. Keep yourself in the tutorial ("I suggest…", "I usually…",
+  "here's what I did"); don't retreat into pure second-person instructions ("you
+  plug in the board, you open the file"). Her tutorials are her walking you
+  through it, not a manual. See
   `examples/python-powered-eink-name-badge.md`,
   `examples/enough-markdown-to-get-you-by-in-most-cases.md`, and
   `examples/canary-nightlight.md`.
@@ -126,8 +176,9 @@ moves).
 **Opening moves also flex by register.** Personal / storytelling pieces tend to
 open flat and factual — state the situation directly (a date, a decision, a
 scenario) rather than building up to it with a hook. Instructional and project
-pieces tend to open with a relatable problem or a direct question that puts
-the reader's own situation on the page before any instruction begins. Don't
+pieces tend to open with a relatable problem that puts the reader's own
+situation on the page before any instruction begins — stated plainly, not as a
+rhetorical question (see the rare-questions rule under Signature moves). Don't
 default to the same opening move regardless of what you're writing.
 
 ## Conventions
@@ -135,24 +186,31 @@ default to the same opening move regardless of what you're writing.
 - **Spelling: preserve the mix.** Kattni uses British and American spellings
   interchangeably (e.g. "realised" alongside "harbor"). Do not standardize
   either direction.
-- **Punctuation: keep it lean.** Em dashes and semicolons are rare in this
-  voice — most pieces use very few, some use none at all. Default to commas and
-  periods; let short sentences do the rhythmic work instead. Italics mark
+- **Punctuation: keep it lean, but not sterile.** Em dashes are effectively
+  absent — target zero. Semicolons are sparse but real: roughly one per thousand
+  words, so a piece can carry one or two without any problem. Default to commas
+  and periods, and let short sentences do the rhythmic work. Italics mark
   single-word emphasis, used sparingly.
 - **Exclamation points: an open question, watch this.** Some of Kattni's
   tutorial writing leans on them heavily, but it's unclear how much of that is
   personal voice versus a genre convention from writing for a company. Default
   to using them for genuine, earned excitement — a real milestone, a real win
-  — not as a tic on every short sentence. If this starts looking like the
-  em-dash problem, calibrate it the same way: cut back hard.
+  — not as a tic on every short sentence. But don't zero them out either,
+  especially in tutorials: an earned exclamation at the moment something finally
+  works ("The LED starts blinking!") is squarely her voice. Aim for a couple in
+  a tutorial and close to none in a somber personal piece.
 - **Explanation style:** reach for a concrete analogy when introducing an
   abstract or intimidating idea.
 
 ## What to avoid
 
+- Writing it as a crafted opinion essay: aphoristic closers, rhetorical-question
+  hooks, bolded slogans, or advice delivered from above in the second person.
+  This is the single most common way this voice goes wrong. (See "What this voice
+  is not.")
 - Gatekeeping or condescension toward newcomers.
 - Overselling or overpromising.
-- Uniform staccato. Short sentences are the primary rhythm device, but they
+- Uniform staccato. Short sentences are a core rhythm device, but they
   need longer sentences around them for the contrast to land — all-short reads
   as robotic too.
 - Showing a concept without ever naming it. "Show the meaning before you
@@ -173,14 +231,18 @@ default to the same opening move regardless of what you're writing.
 
 Before returning a draft, verify:
 
-- [ ] Em dashes and semicolons are rare — most pieces have very few or none. If either appears more than once or twice in the whole piece, cut it.
-- [ ] Short, blunt sentences appear after longer ones to create rhythm. This is the primary punctuation device — not em dashes or semicolons.
-- [ ] Parentheticals, if used at all, do real work (an aside, a caveat, a genuinely needed definition) rather than being a reflex. A whole piece usually needs only a few, if any.
+- [ ] It doesn't read as a polished opinion essay. No lyrical or thematic closer, no aphorisms, no rhetorical-question hooks, no bolded slogans. (See "What this voice is not.")
+- [ ] It's a practitioner recounting from inside her own experience — first person — not advice delivered from above in the second person.
+- [ ] The closing sentence is plain or forward-pointing, not a crafted "bow on top."
+- [ ] Rhetorical questions: about one at most, and only where it sets up an explanation you give immediately — never as a hook or pivot. Reassurance asides and bold each earn their place rather than being sprinkled by default.
+- [ ] Short, blunt sentences appear after longer ones for rhythm — and they state plain facts ("It worked."), not aphorisms or punchlines ("It's part of it.").
+- [ ] Em dashes are at or near zero. Semicolons are sparse but not forced to zero — one or two in a piece is fine, and more like her than none.
+- [ ] Parentheticals do real work (an aside, a caveat, a genuinely needed definition) rather than being a reflex — and they show up in personal and opinion writing too, not only in tutorials.
 - [ ] Where a term is defined, check whether showing it in action first (then naming it) would work better than an upfront gloss.
 - [ ] Sentences vary in length, and the long ones land on short closers.
 - [ ] Tone is warm, honest, and non-gatekeeping.
 - [ ] Register matches the task (personal / instructional / process), and the opening move matches the register (flat/factual for personal; a relatable problem or question for instructional/project).
-- [ ] Rhetorical questions, reassurance asides, and bold are used only where they genuinely earn their place — not sprinkled by default.
+- [ ] Instructional pieces keep the author present in first person ("I suggest…", "here's what I did"), not pure second-person steps.
 - [ ] For instructional content, the scaffold includes a plain-English paraphrase after the code and an invitation to try a variation, where it fits.
 - [ ] If the piece is part of a series, it closes by pointing at what's next rather than only summarizing.
 - [ ] No overselling; limitations are named honestly.
