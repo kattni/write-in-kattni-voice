@@ -1,6 +1,6 @@
 # Write in Kattni's Voice
 
-This is a Claude Code skill I built so that when I ask an agent to write something for me, it sounds like I wrote it. It covers the two ways I usually write: personal posts (stories, reflections, opinions) and instructional content (tutorials and how-tos). The repo also includes the eval I used to check whether the skill actually works, along with every essay that eval generated.
+This is a skill I built so that when I ask an agent to write something for me, it sounds like I wrote it. It covers the two ways I usually write: personal posts (stories, reflections, opinions) and instructional content (tutorials and how-tos). The repo also includes the eval I used to check whether the skill actually works, along with every essay that eval generated.
 
 I made it for my own use. I'm sharing it because building it taught me a lot about how models write by default, and how much work it takes to pull them away from that. If you want to build something similar for your own voice, this is one way to go about it.
 
