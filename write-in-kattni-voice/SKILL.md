@@ -77,13 +77,25 @@ reflexes as a before/after pair.
 ## Signature moves
 
 - **Short, blunt sentences break up the rhythm — and they report, they don't
-  zing.** "Done." "It worked." "That's it." "The display stopped glitching." A
+  zing.** "It worked." "The display stopped glitching." "The test passed." A
   short declarative, dropped after one or two longer sentences, does the work a
-  semicolon or em dash might otherwise be asked to do. The catch: her short
-  sentences state a plain fact. They are not aphorisms or punchlines. "It's part
-  of it." and "Belonging." are an essayist reaching for a quotable, not Kattni.
-  If a short sentence feels clever, it is probably the wrong voice — make it
-  flatter.
+  semicolon or em dash might otherwise be asked to do. Two catches. First, they
+  state a plain fact, not an aphorism or punchline — "It's part of it." and
+  "Belonging." are an essayist reaching for a quotable, not Kattni; if a short
+  sentence feels clever, make it flatter. Second, **placement**: a short fact
+  lands mid-paragraph or right after a longer sentence, never as the payoff of a
+  reveal and never as the last line of a paragraph or section. "It worked."
+  while you are explaining what you did is hers; the same three words used to
+  land a beat at the end of a paragraph is a punchline ("That's it. That's the
+  whole test." is this failure). Move it back into the flow.
+- **Report in the order it happened.** Walk through what you did as a sequence:
+  first this, then that, then the result. Do not withhold a fact to reveal it
+  later for effect, and do not stage the piece as a build-up to a payoff. If it
+  took three days and the cause was a stale cache, the reader can learn near the
+  top what kind of problem it turned out to be — the interest is in the steps
+  you took, not in the suspense. A staged day-by-day arc, a dramatic reveal, or
+  a setup-and-payoff structure is essayist craft, not her plain sequential
+  reporting.
 - **Em dashes near zero; semicolons sparse but not absent.** True em dashes (—)
   are effectively nonexistent in her writing — target zero, and when one wants to
   appear, it is almost always a comma or a period instead. Semicolons are
@@ -134,13 +146,17 @@ reflexes as a before/after pair.
   catch even skimming ("**Always pin to a commit hash...**", "**no code until
   there's a design you've agreed to**"). Both are used sparingly; if more than
   a phrase or two per section is bold, it's stopped meaning anything.
-- **Forward-pointing closers.** End a piece — or a section — by pointing at
-  what comes next, rather than just summarizing what came before ("Next time,
-  we take this design and turn it into an actual plan."). This matters most
-  when the piece is explicitly part of a series: say so, and give the reader a
-  reason to come back. When there is nothing to point forward to, end flat — a
-  plain last sentence — rather than reaching for a lyrical or thematic flourish
-  to close on.
+- **The closing has two allowed shapes — pick one, nothing else.** End on
+  either (a) a **plain fact**: the last concrete thing that happened or is true
+  ("...cheap enough that I'd actually do it."), or (b) a **forward pointer**:
+  the next step, or the next post when the piece is part of a series ("Next
+  time, we take this design and turn it into an actual plan." — say so, and give
+  the reader a reason to come back). Those are the only two endings. Before you
+  return the draft, read your final sentence against them: if it restates the
+  theme, ties a bow, echoes the opening as a callback, or would survive on its
+  own as a pull-quote, it is neither shape — replace it with the plainest true
+  sentence you can stop on. This is the single most common place the voice
+  slips; check it every time.
 
 ## Register adaptation
 
@@ -233,9 +249,10 @@ Before returning a draft, verify:
 
 - [ ] It doesn't read as a polished opinion essay. No lyrical or thematic closer, no aphorisms, no rhetorical-question hooks, no bolded slogans. (See "What this voice is not.")
 - [ ] It's a practitioner recounting from inside her own experience — first person — not advice delivered from above in the second person.
-- [ ] The closing sentence is plain or forward-pointing, not a crafted "bow on top."
+- [ ] The closing sentence is one of the two allowed shapes — a plain fact or a forward pointer — and would NOT survive on its own as a pull-quote or an opening callback. (See "The closing has two allowed shapes.")
+- [ ] Events are reported in the order they happened — no withheld reveal, no staged day-by-day arc, no setup-and-payoff.
 - [ ] Rhetorical questions: about one at most, and only where it sets up an explanation you give immediately — never as a hook or pivot. Reassurance asides and bold each earn their place rather than being sprinkled by default.
-- [ ] Short, blunt sentences appear after longer ones for rhythm — and they state plain facts ("It worked."), not aphorisms or punchlines ("It's part of it.").
+- [ ] Short, blunt sentences appear after longer ones for rhythm — and they state plain facts ("It worked."), not aphorisms or punchlines ("It's part of it."). None of them lands as a reveal-payoff or as the last line of a paragraph or section.
 - [ ] Em dashes are at or near zero. Semicolons are sparse but not forced to zero — one or two in a piece is fine, and more like her than none.
 - [ ] Parentheticals do real work (an aside, a caveat, a genuinely needed definition) rather than being a reflex — and they show up in personal and opinion writing too, not only in tutorials.
 - [ ] Where a term is defined, check whether showing it in action first (then naming it) would work better than an upfront gloss.
