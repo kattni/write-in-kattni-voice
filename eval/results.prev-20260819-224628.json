@@ -1,0 +1,643 @@
+{
+  "topics": [
+    {
+      "topic": "writing your first test with pytest",
+      "register": "tutorial",
+      "conditions": {
+        "skill": {
+          "condition": "skill",
+          "essay": "I put off writing tests for longer than I'd like to admit. Every project I started, I told myself I'd add tests once the code settled down, and the code never settled down, so the tests never showed up. That's a pretty common trap, and pytest is the tool I finally used to climb out of it.\n\npytest is a testing framework for Python. It runs a file full of functions, checks each one against the rules you wrote, and tells you which ones held up and which ones didn't. Nothing fancier than that.\n\nStart with a project. Say you have a function that adds two numbers, sitting in a file called calculator.py:\n\n```python\ndef add(a, b):\n    return a + b\n```\n\nTo test it, create a new file. pytest looks for files that start with test_ or end with _test.py, so call it test_calculator.py:\n\n```python\nfrom calculator import add\n\ndef test_add():\n    assert add(2, 3) == 5\n```\n\nThis tells pytest to import the add function, run it with 2 and 3, and check that the result is 5. The assert keyword is doing the actual work here (it's Python's built-in way of saying \"this had better be true, or stop and tell me\"). If the condition after assert is false, the test fails. If it's true, pytest just moves on.\n\nRun it from your terminal:\n\n```\npytest\n```\n\nIf everything's set up right, you'll see a single green dot and a line that says something like \"1 passed.\" That's it. That's the whole test.\n\nI remember being surprised the first time by how little ceremony this takes. No setup class, no boilerplate, just a function whose name starts with test_ and an assert statement inside it. pytest finds it, runs it, reports back.\n\nTry breaking it on purpose. Change the assert to expect 6 instead of 5, and run pytest again. You'll get a red F instead of a dot, along with the actual value it got and the value it expected. That output is worth reading closely, since it's the same output you'll be staring at months from now when a real bug shows up, and it helps to already know what it looks like when you're not under pressure.\n\nOne thing worth naming honestly: a single passing test doesn't mean your code is correct. It means this one input behaves the way you expected. Try adding a second test for negative numbers, or zero, or whatever edge case worries you. Each one is small, and each one is a fact about your code you no longer have to hold in your head.\n\nI didn't start writing tests because I loved testing. I started because I got tired of re-checking the same thing by hand every time I changed a line of code. pytest just gave me a way to make that checking automatic, and cheap enough that I'd actually do it.",
+          "stylometric_overall": 0.7349368978101503,
+          "stylometric": {
+            "overall": 0.7349368978101503,
+            "function_word_similarity": 0.8472741487042471,
+            "scalar_similarity": 0.6225996469160534,
+            "scalar_closeness": {
+              "avg_sentence_len": 0.896131753827937,
+              "sentence_len_cv": 0.9481259471925136,
+              "avg_word_len": 0.958309086049512,
+              "mattr": 0.972881875410598,
+              "flesch": 0.8688475192934443,
+              "comma_rate": 0.9915320181261298,
+              "semicolon_rate": 7.736429274984857e-10,
+              "colon_rate": 0.7334286996159272,
+              "dash_rate": 1.0,
+              "question_rate": 1.3538750121000476e-09,
+              "exclaim_rate": 6.769375060500238e-10,
+              "paren_rate": 0.9711288442603678,
+              "contraction_rate": 0.46314295850644016,
+              "first_person_rate": 0.9773167396634741,
+              "second_person_rate": 0.8989836529583717
+            }
+          },
+          "judge_overall": 5,
+          "essayist_tells": 4,
+          "judge": {
+            "tone": 5,
+            "sentence_rhythm": 5,
+            "vocabulary": 6,
+            "punctuation_habits": 5,
+            "essayist_tells": 4,
+            "overall": 5,
+            "rationale": "The candidate shares Kattni's first-person practitioner framing and plain technical vocabulary, but it reads as a polished personal essay \u2014 reflective memoir framing, parenthetical asides used for effect, fragment punchlines (\"That's it. That's the whole test.\"), and a thematic closing line \u2014 where Kattni's tutorials are structurally scaffolded (kBits lists, headings, \"you would include:\" / \"Which ends up rendered as:\" refrains) and her personal posts are longer-winded, comma-spliced narrative without epigrammatic polish."
+          },
+          "tutorial_structure": {
+            "score": 1.0,
+            "signals": {
+              "code_block": true,
+              "steps": true,
+              "expected_output": true,
+              "invite_experiment": true
+            }
+          }
+        },
+        "baseline_samples": {
+          "condition": "baseline_samples",
+          "essay": "I wrote my first pytest test at a point where I already understood, conceptually, what tests were for. I just hadn't sat down and done it. There's a particular kind of resistance that builds up around testing, I think, because it feels like it should be complicated. It isn't. That was the biggest surprise.\n\npytest asks very little of you to get started. You don't need to inherit from a class, you don't need to register anything, you don't need a special runner configuration to make a simple test work. You write a function whose name starts with `test_`, and inside it, you assert something is true. That's genuinely most of it.\n\nSay you have a function that adds two numbers:\n\n```python\ndef add(a, b):\n    return a + b\n```\n\nA test for it might look like this:\n\n```python\ndef add(a, b):\n    return a + b\n\n\ndef test_add():\n    assert add(2, 3) == 5\n```\n\nSave that in a file named `test_add.py`, run `pytest` from the command line in that directory, and it finds the test, runs it, and tells you whether it passed. No imports of a testing framework class, no boilerplate. Just a plain `assert`.\n\nThat word, `assert`, is doing all the work, and it's worth sitting with for a second. You're not calling a special `assertEqual` method or anything like that, the way some other testing frameworks require. You're writing a regular Python expression that evaluates to `True` or `False`, and pytest is smart enough to introspect it when it fails and tell you exactly what values didn't match. If `add(2, 3)` had returned `6`, pytest wouldn't just say \"assertion failed.\" It would show you both sides of the comparison, which turns out to be enormously more useful than it sounds when you're debugging at 11pm.\n\nNaming matters here too, in a way I didn't appreciate until I'd written a handful of these. Test files need to start with `test_` (or end in `_test.py`), and test functions need to start with `test_`, because that's how pytest's discovery mechanism finds them. Skip the prefix, and pytest will run right past your test without a word of complaint, and you'll be very confused later about why a bug you know you're testing for isn't getting caught. Ask me how I know.\n\nOnce you've written one test, the second one is easy, and the third is easier still, because you're not learning a framework anymore, you're just writing more functions. That's really the appeal of pytest as a starting point: it gets out of your way. You can add fixtures and parametrization and all sorts of more advanced features later, and there's plenty to learn if you want to go deeper. But none of that is required to get real value out of testing on day one.\n\nIf you've been putting off writing your first test the way I put off my own, for no better reason than a vague sense that it would be a whole thing, it isn't. Write the function, write the assert, run `pytest`, and see what happens. That's the whole barrier to entry, and it's lower than you think.",
+          "stylometric_overall": 0.7050001909078203,
+          "stylometric": {
+            "overall": 0.7050001909078203,
+            "function_word_similarity": 0.8200776237800289,
+            "scalar_similarity": 0.5899227580356117,
+            "scalar_closeness": {
+              "avg_sentence_len": 0.9880052790790742,
+              "sentence_len_cv": 0.9578443559515608,
+              "avg_word_len": 0.9823095071532367,
+              "mattr": 0.9585993703090735,
+              "flesch": 0.9116073643356264,
+              "comma_rate": 0.8905505761851936,
+              "semicolon_rate": 7.736429274984857e-10,
+              "colon_rate": 0.5842908777236044,
+              "dash_rate": 1.0,
+              "question_rate": 1.3538750121000476e-09,
+              "exclaim_rate": 6.769375060500238e-10,
+              "paren_rate": 0.9456910853113619,
+              "contraction_rate": 0.3289184221330185,
+              "first_person_rate": 0.8225461642773324,
+              "second_person_rate": 0.8624094107784025
+            }
+          },
+          "judge_overall": 4,
+          "essayist_tells": 3,
+          "judge": {
+            "tone": 4,
+            "sentence_rhythm": 5,
+            "vocabulary": 6,
+            "punctuation_habits": 5,
+            "essayist_tells": 3,
+            "overall": 4,
+            "rationale": "The candidate is warmer, more literary, and more reader-addressing than Kattni's plain step-by-step practitioner voice, leaning on essayist moves she never uses \u2014 rhetorical asides (\"Ask me how I know.\"), reflective flourishes (\"worth sitting with for a second,\" \"debugging at 11pm\"), and an exhortative closing line \u2014 instead of her flat \"Here is what I found / Done.\" reporting and structured tutorial scaffolding."
+          },
+          "tutorial_structure": {
+            "score": 0.5,
+            "signals": {
+              "code_block": true,
+              "steps": true,
+              "expected_output": false,
+              "invite_experiment": false
+            }
+          }
+        },
+        "baseline_naive": {
+          "condition": "baseline_naive",
+          "essay": "The first time you write a test, you're not testing code. You're testing a belief \u2014 the belief that your function does what you think it does. pytest is a good tool for this because it gets out of your way faster than almost anything else in the Python ecosystem.\n\nHere's the whole ceremony. You have a function:\n\n```python\ndef add(a, b):\n    return a + b\n```\n\nYou write a file called `test_add.py`, next to it or in a `tests/` folder, and you put this inside:\n\n```python\nfrom mymodule import add\n\ndef test_add():\n    assert add(2, 3) == 5\n```\n\nThat's it. No class to inherit from, no `setUp` boilerplate, no decorator you have to remember the name of. A function whose name starts with `test_`, containing a plain `assert`. Run `pytest` from your terminal, and it finds the file, finds the function, runs it, and tells you whether the world matches your expectations.\n\nThe part that tends to surprise people coming from other testing frameworks \u2014 including, if you've touched Python's built-in `unittest`, your past self \u2014 is the assert. You don't call `self.assertEqual(add(2, 3), 5)`. You just write the condition you believe is true, the way you'd say it out loud. If it's false, pytest doesn't just say \"AssertionError.\" It rewrites the assertion at import time so the failure output shows you the actual values on both sides of that `==`, the line of code, the whole picture. You get a debugging session in the output of a failed test, for free, without instrumenting anything yourself.\n\nThat matters more than it sounds like it should. The gap between \"I wrote a test\" and \"I write tests\" is almost entirely about friction. If checking your work costs you fifteen minutes of framework ceremony, you'll do it once, feel virtuous, and quietly stop. If it costs you four lines and a command you already have muscle memory for, you'll do it every time you touch the function, without having to talk yourself into it.\n\nStart small on purpose. Test one function, one input, one obvious expected output. Don't reach for fixtures, don't reach for parametrize, don't try to cover every edge case in your first file. The goal of your first test isn't coverage \u2014 it's building the reflex. Write the function, write the test, watch it pass, then break the function on purpose and watch the test catch you. That last step is the one people skip, and it's the one that actually proves the test is doing anything. A test you've never seen fail is a test you don't actually trust yet.\n\nOnce that reflex is in place, the rest of pytest \u2014 fixtures for shared setup, `parametrize` for running one test against many inputs, plugins for coverage and mocking and async \u2014 stops being a wall of features to learn and starts being a toolbox you reach into exactly when you feel the friction that each piece was built to remove. But none of that is where you start. You start with one function, one assert, and the small, real satisfaction of watching a single green dot appear where you weren't sure one would.",
+          "stylometric_overall": 0.5973787938036718,
+          "stylometric": {
+            "overall": 0.5973787938036718,
+            "function_word_similarity": 0.8560710990258403,
+            "scalar_similarity": 0.3386864885815032,
+            "scalar_closeness": {
+              "avg_sentence_len": 0.992128601077993,
+              "sentence_len_cv": 0.9640258283442096,
+              "avg_word_len": 0.9905825011408418,
+              "mattr": 0.9959549486888486,
+              "flesch": 0.9132161909993067,
+              "comma_rate": 0.8810997273585062,
+              "semicolon_rate": 7.736429274984857e-10,
+              "colon_rate": 0.42876795030841386,
+              "dash_rate": 8.11666289735058e-11,
+              "question_rate": 1.3538750121000476e-09,
+              "exclaim_rate": 6.769375060500238e-10,
+              "paren_rate": 2.166200552267128e-10,
+              "contraction_rate": 0.43021943704515875,
+              "first_person_rate": 0.24340830053537454,
+              "second_person_rate": 0.5650445835370024
+            }
+          },
+          "judge_overall": 3,
+          "essayist_tells": 2,
+          "judge": {
+            "tone": 3,
+            "sentence_rhythm": 3,
+            "vocabulary": 4,
+            "punctuation_habits": 4,
+            "essayist_tells": 2,
+            "overall": 3,
+            "rationale": "The candidate writes as a polished second-person essayist with aphoristic lines, fragment punchlines, em-dash asides, and a lyrical closing image, whereas Kattni writes plainly in first person, reporting concrete steps she took and what happened, with literal transitions and no rhetorical flourish."
+          },
+          "tutorial_structure": {
+            "score": 0.75,
+            "signals": {
+              "code_block": true,
+              "steps": true,
+              "expected_output": true,
+              "invite_experiment": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "topic": "why good error messages are worth the effort",
+      "register": "opinion",
+      "conditions": {
+        "skill": {
+          "condition": "skill",
+          "essay": "481 words, close enough to \"about 500.\" Here's the essay:\n\nI spent an afternoon last month debugging a script that failed with \"Error: 13.\" No context, no hint at what went wrong, just a number. I ended up grepping the library's source to find that 13 meant a permission error on a file it never named. That afternoon is the whole argument for why error messages matter: they're the difference between a five-minute fix and a lost afternoon.\n\nGood error messages cost time upfront. You have to think about what actually broke, not just that something did, then write a sentence that says so in plain language. That's more work than raising a bare exception and moving on. It's worth it anyway, and here's why.\n\nAn error message is often the only communication a piece of software has with the person hitting the problem. They didn't ask for a conversation, but they're in one now, whether the message is useful or not. A message that just says \"invalid input\" hands the reader nothing to work with. A message that says \"expected a number between 1 and 10, got 'blue'\" hands them the fix.\n\nI think about it the way I'd think about handing someone a map instead of pointing vaguely at a direction. (Vague pointing works fine if you already know the terrain. It's useless if you don't, and most people hitting your error don't.) The map costs more to draw. It saves the person walking it far more than that.\n\nThis matters most for beginners, and beginners are who I write for most of the time. A cryptic traceback doesn't just cost an experienced developer twenty minutes, it can convince a beginner the problem is them, not the message. I've watched people close a tutorial and give up on a whole project because the error they hit gave them nothing to go on, no line number, no hint at what to check, nothing they could act on. That's not a technical failure; that's a message failure, and it's one we hand the reader, not one they made themselves.\n\nThere's a real cost to doing this well, and I won't pretend otherwise. Writing good errors means catching the specific failure instead of a generic one, which means more code paths to think through and more cases to test. It's slower to write. It's slower to review. None of that goes away just because I believe in it.\n\nBut the cost is paid once, by the person who wrote the message. The cost of a bad error message is paid over and over, by everyone who hits it after. That math favors spending the extra hour.\n\nThe next time I'm tempted to raise a bare exception because the deadline's close and it's late, I try to remember Error: 13. Somebody's going to hit that message at 11pm with no idea what a permission error even is. I'd rather the message tell them.",
+          "stylometric_overall": 0.7690163838371964,
+          "stylometric": {
+            "overall": 0.7690163838371964,
+            "function_word_similarity": 0.8754753628735273,
+            "scalar_similarity": 0.6625574048008654,
+            "scalar_closeness": {
+              "avg_sentence_len": 0.9081786635089036,
+              "sentence_len_cv": 0.8736047411065619,
+              "avg_word_len": 0.9830773653447639,
+              "mattr": 0.971074733135297,
+              "flesch": 0.9156245269421331,
+              "comma_rate": 0.8843311862245494,
+              "semicolon_rate": 0.7706713581070695,
+              "colon_rate": 0.7080299724751282,
+              "dash_rate": 1.0,
+              "question_rate": 1.3538750121000476e-09,
+              "exclaim_rate": 6.769375060500238e-10,
+              "paren_rate": 0.9436312946570854,
+              "contraction_rate": 0.36125998732376463,
+              "first_person_rate": 0.7151151514713081,
+              "second_person_rate": 0.4722244930364894
+            }
+          },
+          "judge_overall": 3,
+          "essayist_tells": 2,
+          "judge": {
+            "tone": 4,
+            "sentence_rhythm": 4,
+            "vocabulary": 5,
+            "punctuation_habits": 5,
+            "essayist_tells": 2,
+            "overall": 3,
+            "rationale": "The candidate is a polished op-ed with epigrammatic closers, fragment punchlines, and a lyrical callback ending, where the reference author writes plain, procedural, first-person reports that walk through what she did step by step and close with practical wrap-ups rather than rhetorical flourish."
+          },
+          "tutorial_structure": null
+        },
+        "baseline_samples": {
+          "condition": "baseline_samples",
+          "essay": "Good error messages are worth the effort because they are, in a very real sense, a form of documentation, and documentation is only useful if someone can actually use it in the moment they need it. When something breaks, the error message is the first thing a person sees, and it is very often the only thing standing between them figuring it out themselves and them giving up, or worse, filing a support ticket that someone else now has to spend their afternoon untangling.\n\nI think about this a lot, because I spend a fair amount of my time writing tutorials and documentation, and a poorly worded error message undoes a lot of the careful explaining I did three steps earlier. You can write the clearest possible walkthrough, and it won't matter if the tool the reader is using responds to a mistake with `Error: invalid input` and nothing else. That message tells you something went wrong. It does not tell you what, where, or how to fix it. It is, functionally, a shrug.\n\nA good error message does at least three things. It tells you what happened, in language that assumes you are a person and not the system itself. It tells you where, specifically, so you're not hunting through five hundred lines of code for the one that misbehaved. And, when it's possible, it tells you what to do about it. That third one is the part people skip most often, and it's the part that turns an error from a dead end into a next step. \"Invalid input\" is a dead end. \"Expected a language code directory in `docs/locales/`, but none was found \u2014 create the directory before running this command\" is a next step. The second one costs maybe two more sentences to write, and it saves the reader an hour of guessing, or worse, of reading the source code to figure out what you meant.\n\nThere's a selfish reason to do this too, if the altruistic one isn't motivating enough on its own: writing a good error message forces you to actually understand your own failure modes. You can't write \"the language code directory doesn't exist\" as an error unless you've already thought through why someone would hit that state, and what they were probably trying to do when they got there. That thinking has a way of catching bugs before anyone else does, simply because you had to sit with the failure case instead of skating past it with a generic exception.\n\nI'll admit this is not glamorous work. Nobody opens a changelog excited to read that error messages got clearer. It doesn't move like a new feature does. But every person who hits that message later, at some inconvenient hour, trying to get something working, benefits from the two extra minutes you spent being specific instead of vague. Multiply that by however many people will ever run your code, and the math is not close. A clear error message is a small kindness, extended to a stranger you'll never meet, at the exact moment they're most frustrated with you. That seems like a pretty good use of effort to me.",
+          "stylometric_overall": 0.6154829351179568,
+          "stylometric": {
+            "overall": 0.6154829351179568,
+            "function_word_similarity": 0.8644054537271081,
+            "scalar_similarity": 0.3665604165088055,
+            "scalar_closeness": {
+              "avg_sentence_len": 0.9166989696362431,
+              "sentence_len_cv": 0.9231249183478345,
+              "avg_word_len": 0.9902539908737729,
+              "mattr": 0.9541803086350479,
+              "flesch": 0.977552057379128,
+              "comma_rate": 0.9724484999549445,
+              "semicolon_rate": 7.736429274984857e-10,
+              "colon_rate": 0.22584109182289813,
+              "dash_rate": 5.219999987815527e-10,
+              "question_rate": 1.3538750121000476e-09,
+              "exclaim_rate": 6.769375060500238e-10,
+              "paren_rate": 2.166200552267128e-10,
+              "contraction_rate": 0.6436405146061526,
+              "first_person_rate": 0.4885056175344781,
+              "second_person_rate": 0.9629551612879024
+            }
+          },
+          "judge_overall": 3,
+          "essayist_tells": 2,
+          "judge": {
+            "tone": 4,
+            "sentence_rhythm": 4,
+            "vocabulary": 5,
+            "punctuation_habits": 4,
+            "essayist_tells": 2,
+            "overall": 3,
+            "rationale": "The candidate is a polished opinion essay with em-dash asides, epigrammatic flourishes (\"It is, functionally, a shrug\", \"a small kindness, extended to a stranger you'll never meet\"), and a lyrical closing line, whereas Kattni writes plainly and procedurally in first person about what she actually did and what happened, without rhetorical polish."
+          },
+          "tutorial_structure": null
+        },
+        "baseline_naive": {
+          "condition": "baseline_naive",
+          "essay": "Every developer has hit the wall of `undefined is not a function` at 2am and felt something between rage and despair. That message tells you nothing about what broke, why, or what to do next. It's the software equivalent of a shrug. And yet we ship messages like this constantly, because writing a good one takes an extra five minutes we've convinced ourselves we don't have.\n\nHere's the thing: those five minutes are some of the highest-leverage minutes you'll spend as a developer.\n\nAn error message is a support ticket you get to answer before it's ever filed. Every vague message you ship becomes someone else's investigation \u2014 a support engineer digging through logs, a teammate pinging you on Slack, a user quietly giving up and closing the tab. You're not avoiding the work of explaining what went wrong; you're just deciding who does it, and when. Do it now, in the code, while you have full context, or do it later, exhausted, reconstructing that same context from a stack trace and a vague memory of what this function even does.\n\nGood error messages also force a kind of honesty about your code. When I write `raise ValueError(\"count must be positive\")` instead of letting an assertion fail silently three functions later, I'm actually confronting the assumption I baked into the function. Writing the message means naming the invariant. If you can't write a clear sentence about what went wrong, that's often a sign you don't fully understand your own failure modes yet \u2014 which is worth knowing before it ships, not after.\n\nThere's a technical-writing instinct that applies directly here: write for the reader who has the least context, not the one who has the most. You know exactly what your function does and why it might fail. The person hitting the error \u2014 future you, a teammate, a user \u2014 doesn't. A message like `Error: invalid input` assumes a reader who already knows what \"invalid\" means in this context. A message like `Config value \"timeout\" must be a positive integer, got -5` assumes nothing. It hands the reader exactly what they need to fix the problem without opening the source.\n\nThe best error messages do three things: say what happened, say why (or where), and say what to do about it. Not every message needs all three \u2014 a quick internal assertion might just need the first \u2014 but the ones users actually see should aim for all three every time. \"Failed to connect to database\" is a status update. \"Failed to connect to database at localhost:5432 \u2014 is Postgres running? Check DATABASE_URL in your .env file\" is an actual answer.\n\nI think of error messages as documentation that only appears exactly when it's needed, to exactly the person who needs it, at exactly the moment they're most receptive to reading it. That's an incredible amount of leverage for a single string. Most documentation gets skimmed or ignored; an error message gets read every time, because the reader has no choice.\n\nSo when you're tempted to throw a generic exception and move on, remember: you're not skipping the writing. You're just handing it to someone with less context, less time, and less patience than you have right now.",
+          "stylometric_overall": 0.7355482691256349,
+          "stylometric": {
+            "overall": 0.7355482691256349,
+            "function_word_similarity": 0.8808439691094009,
+            "scalar_similarity": 0.5902525691418689,
+            "scalar_closeness": {
+              "avg_sentence_len": 0.9826639907579672,
+              "sentence_len_cv": 0.8523645319278814,
+              "avg_word_len": 0.9881396168386946,
+              "mattr": 0.9590962916401119,
+              "flesch": 0.9942441049424383,
+              "comma_rate": 0.8987620964873702,
+              "semicolon_rate": 0.4972597989173754,
+              "colon_rate": 0.787073707779035,
+              "dash_rate": 7.314282512993486e-11,
+              "question_rate": 0.5488041805119644,
+              "exclaim_rate": 6.769375060500238e-10,
+              "paren_rate": 0.9166772460002129,
+              "contraction_rate": 0.44736455884754134,
+              "first_person_rate": 0.5667268398712935,
+              "second_person_rate": 0.9877637665972452
+            }
+          },
+          "judge_overall": 3,
+          "essayist_tells": 2,
+          "judge": {
+            "tone": 3,
+            "sentence_rhythm": 3,
+            "vocabulary": 4,
+            "punctuation_habits": 3,
+            "essayist_tells": 2,
+            "overall": 3,
+            "rationale": "The candidate is a polished opinion essay full of em-dash rhetoric, aphoristic turns (\"It's the software equivalent of a shrug\"), rhetorical questions, and a punchy closing zinger, whereas Kattni writes plainly and procedurally in first person about what she actually did, with plodding declaratives, parentheticals, and mundane step-by-step reporting rather than persuasion."
+          },
+          "tutorial_structure": null
+        }
+      }
+    },
+    {
+      "topic": "the bug that took me three days to find",
+      "register": "narrative",
+      "conditions": {
+        "skill": {
+          "condition": "skill",
+          "essay": "It was on a project I'd been building for about two weeks, an e-ink display running on a small board, and it started with the screen going blank at random. Not every time. Not on any schedule I could find. I'd power the thing on, it would run for anywhere between ten minutes and four hours, and then the display would just die. No error message. No traceback. Nothing in the log pointing at anything.\n\nMy first guess was the power supply. I swapped it for one I trusted, added a bigger capacitor, and left the board running overnight to see if a cleaner supply would fix it. It died around 3am anyway. Scratch that.\n\nMy second guess was memory. I added print statements at every allocation, expecting to catch the exact moment I ran out of RAM. I didn't. Usage looked fine right up until the display stopped responding, and it looked fine after that too. Whatever was happening wasn't a resource problem. It was something else, and I had no idea what.\n\nBy day two I was reading through the display driver line by line, which is not something I recommend doing for fun. I found two things in there that looked suspicious and fixed neither of them; neither turned out to be it. That's the part nobody tells you about debugging like this: most of what you find along the way isn't the bug. It's just stuff that also happens to be wrong.\n\nThe actual cause, when I finally found it, was one line in a function I hadn't touched in weeks (and had ruled out on day one, because I \"knew\" what it did). It reset a counter on the wrong condition. Every so often, depending on exactly how long the loop had been running when a particular sensor reading came in, that counter would wrap around instead of resetting cleanly, and the wraparound value happened to land on an index the display driver used without checking it first.\n\nI found it by giving up on reproducing the bug on purpose and just logging everything, all of it, for six hours, then reading back through the output afterward looking for anything that was different right before a crash. The counter value was the one thing that never matched.\n\nI fixed the condition, cleaned up the wraparound math too since I clearly didn't trust it anymore, and the display ran for four days straight without a single hiccup. Four days, on a bug that took three to find.\n\nWhat sticks with me is how small the fix ended up being. One condition, flipped. Nothing about the actual solution explains why it took so long to see, except that intermittent bugs hide exactly where you've already decided things are fine. I hadn't watched that function closely because I thought I already understood it. I just hadn't watched it enough times to be wrong.",
+          "stylometric_overall": 0.7334784582614056,
+          "stylometric": {
+            "overall": 0.7334784582614056,
+            "function_word_similarity": 0.8207966157017909,
+            "scalar_similarity": 0.6461603008210202,
+            "scalar_closeness": {
+              "avg_sentence_len": 0.9091999432384618,
+              "sentence_len_cv": 0.9130203574495848,
+              "avg_word_len": 0.9829887011436369,
+              "mattr": 0.9502506355670631,
+              "flesch": 0.9260871819369542,
+              "comma_rate": 0.9043543606237623,
+              "semicolon_rate": 0.7716472923845772,
+              "colon_rate": 0.24055791851100616,
+              "dash_rate": 1.0,
+              "question_rate": 1.3538750121000476e-09,
+              "exclaim_rate": 6.769375060500238e-10,
+              "paren_rate": 0.9426047604608616,
+              "contraction_rate": 0.6473930690074725,
+              "first_person_rate": 0.7701737020510264,
+              "second_person_rate": 0.2672407412214536
+            }
+          },
+          "judge_overall": 4,
+          "essayist_tells": 3,
+          "judge": {
+            "tone": 4,
+            "sentence_rhythm": 4,
+            "vocabulary": 6,
+            "punctuation_habits": 5,
+            "essayist_tells": 3,
+            "overall": 4,
+            "rationale": "The candidate tells a first-person technical story with plausible vocabulary, but its clipped fragments (\"Not every time.\" \"Scratch that.\"), withheld-reveal pacing, and reflective aphoristic ending (\"intermittent bugs hide exactly where you've already decided things are fine\") read as polished essayist craft rather than Kattni's plain, sequential, explanatory reporting with her characteristic connectives, parentheticals, and practical wrap-ups."
+          },
+          "tutorial_structure": null
+        },
+        "baseline_samples": {
+          "condition": "baseline_samples",
+          "essay": "The bug that took me three days to find was not, in the end, a hard bug. That's the part that still gets me. It was a single misplaced assumption, buried three function calls deep, and once I found it, the fix was one line. But getting to that one line took the better part of a work week, several increasingly unhinged theories, and at least one moment where I seriously considered whether the hardware itself was cursed.\n\nHere's the setup. I was working on a CircuitPython project, and intermittently, maybe one run in twenty, a value I was reading from a sensor would come back subtly wrong. Not garbage, not zero, just... off. Off in a way that looked plausible enough that it took me a full day to even confirm it was actually a bug, and not just sensor noise I hadn't accounted for. I spent that first day convincing myself I wasn't imagining things, which in retrospect is its own kind of debugging, even if it doesn't feel like progress at the time.\n\nDay two, I did what I always do when something is intermittent: I assumed it was timing. Race conditions love to hide in the gaps between \"this should be instant\" and \"this is actually running on a microcontroller with other things going on.\" I added delays. I removed delays. I restructured the order of operations. Nothing changed the failure rate, which should have told me I was wrong about the cause, but instead I just concluded I hadn't found the right delay yet. This is, I think, the most dangerous place to be in a debugging session: convinced of a theory, and interpreting every failed experiment as \"not enough of the fix\" rather than \"not the right fix at all.\"\n\nIt was day three, staring at the same fifteen lines of code for what felt like the four hundredth time, that I noticed I was reusing a variable name across two different scopes that I had, somewhere along the way, convinced myself were isolated from each other. They were not isolated from each other. One in twenty times, depending on how a loop had last exited, the \"fresh\" value I thought I was reading was actually a leftover from the previous pass. It had nothing to do with timing. It had nothing to do with the sensor. It had to do with me, three days earlier, deciding a variable could be trusted to reset itself, and never once going back to verify that assumption.\n\nWhat I keep coming back to is how much of those three days I spent testing everything except the thing that was actually wrong. I checked the hardware. I checked the timing. I checked the sensor's documentation twice. The one thing I didn't check was my own foundational assumption, because it didn't feel like a place a bug could live. It felt too basic to be wrong. That's usually exactly where they are.",
+          "stylometric_overall": 0.6421437109384766,
+          "stylometric": {
+            "overall": 0.6421437109384766,
+            "function_word_similarity": 0.8161636854665104,
+            "scalar_similarity": 0.46812373641044275,
+            "scalar_closeness": {
+              "avg_sentence_len": 0.963770392210764,
+              "sentence_len_cv": 0.9239438234697656,
+              "avg_word_len": 0.9802858933808068,
+              "mattr": 0.9822916299751906,
+              "flesch": 0.9395390793212656,
+              "comma_rate": 0.9751276279142781,
+              "semicolon_rate": 7.736429274984857e-10,
+              "colon_rate": 0.4246576685493393,
+              "dash_rate": 1.0,
+              "question_rate": 1.3538750121000476e-09,
+              "exclaim_rate": 6.769375060500238e-10,
+              "paren_rate": 2.166200552267128e-10,
+              "contraction_rate": 0.7362759167944753,
+              "first_person_rate": 0.5773876304611473,
+              "second_person_rate": 3.747746557536402e-11
+            }
+          },
+          "judge_overall": 3,
+          "essayist_tells": 2,
+          "judge": {
+            "tone": 4,
+            "sentence_rhythm": 4,
+            "vocabulary": 5,
+            "punctuation_habits": 5,
+            "essayist_tells": 2,
+            "overall": 3,
+            "rationale": "The candidate is a polished narrative-essay debugging story with dramatic pacing, a rhetorical setup-and-payoff structure, italicized emphasis for effect, and an aphoristic closing line (\"That's usually exactly where they are\"), whereas Kattni writes as a plain, sequential first-person practitioner whose posts end in practical wrap-ups and next steps rather than thematic punchlines."
+          },
+          "tutorial_structure": null
+        },
+        "baseline_naive": {
+          "condition": "baseline_naive",
+          "essay": "The bug didn't announce itself. It just sat there, quiet, in a corner of a data pipeline that had been running fine for eight months, and then one Tuesday it started dropping about one record in four thousand. No error. No stack trace. Just... gone. A number that should have summed to X summed to X minus a handful of rows, and nobody could tell me which rows, or why.\n\nDay one was denial. I assumed it was the obvious thing \u2014 a race condition in the batch writer, because it's always a race condition in the batch writer. I added logging, ran it again, and watched it not reproduce. That's the first lesson a bug like this teaches you: if you can't make it happen on command, you don't understand it yet, you've just gotten lucky enough to notice it exists.\n\nDay two was bargaining. I built a smaller reproduction, cut the dataset down to the smallest slice that still failed, and stared at diffs between the input and the output until my eyes crossed. I was sure it was an encoding issue \u2014 some stray byte sequence tripping a parser. It wasn't. I was sure it was a timeout \u2014 some downstream service silently swallowing a slow request. It wasn't that either. Every hypothesis I killed felt like progress and also felt like nothing, because the bug was still there, still eating one record in four thousand, indifferent to my theories.\n\nThe thing nobody tells you about a bug like this is how much of the work is bookkeeping. Not clever debugging, not flashes of insight \u2014 writing down what you've ruled out so you don't rule it out again in six hours when you've forgotten you already checked. I started keeping a log, timestamped, of every hypothesis and every result. Boring. Necessary. It's the difference between three days and three weeks.\n\nDay three, I stopped trying to explain the bug and started trying to describe it precisely instead. Not \"records are dropped\" but \"records are dropped when field A is null AND field B crosses a batch boundary AND the batch size happens to divide the retry window evenly.\" That last clause was the one that broke it open. A retry handler was deduplicating by an index computed from batch size, and under one specific arithmetic condition, two different records collapsed onto the same index. The fix was four lines. The finding was three days.\n\nI don't think the takeaway is \"be more careful,\" because I was careful the whole time \u2014 careful is not the bottleneck. The bottleneck was that I kept reaching for explanations before I had a precise enough description of the failure to deserve one. Every hour I lost was an hour spent theorizing about a bug I hadn't actually pinned down yet.\n\nI wrote the postmortem the next day, mostly for future-me. Not because the bug was interesting \u2014 the fix, honestly, is dull to read. But the shape of the search is worth keeping: doubt your first theory, log what you rule out, and don't let yourself explain something you can't yet describe.",
+          "stylometric_overall": 0.6250432417523952,
+          "stylometric": {
+            "overall": 0.6250432417523952,
+            "function_word_similarity": 0.8695002827491043,
+            "scalar_similarity": 0.38058620075568605,
+            "scalar_closeness": {
+              "avg_sentence_len": 0.8967300806300165,
+              "sentence_len_cv": 0.9384037287309202,
+              "avg_word_len": 0.9954972897794199,
+              "mattr": 0.9835023336492316,
+              "flesch": 0.9407316125734598,
+              "comma_rate": 0.9321399371751828,
+              "semicolon_rate": 7.736429274984857e-10,
+              "colon_rate": 0.4089754845355982,
+              "dash_rate": 8.616662938720765e-11,
+              "question_rate": 1.3538750121000476e-09,
+              "exclaim_rate": 6.769375060500238e-10,
+              "paren_rate": 2.166200552267128e-10,
+              "contraction_rate": 0.5526825683274237,
+              "first_person_rate": 0.8928515706977345,
+              "second_person_rate": 0.8405148162984796
+            }
+          },
+          "judge_overall": 3,
+          "essayist_tells": 2,
+          "judge": {
+            "tone": 3,
+            "sentence_rhythm": 3,
+            "vocabulary": 4,
+            "punctuation_habits": 4,
+            "essayist_tells": 2,
+            "overall": 3,
+            "rationale": "The candidate is a polished literary essay \u2014 dramatic fragments (\"Boring. Necessary.\"), an epigrammatic tricolon closing line, and a staged day-by-day arc \u2014 whereas Kattni writes plainly and procedurally in long, explanatory sentences with parenthetical clarifications, hedges like \"That said,\" and endings that state next steps rather than deliver a punchline."
+          },
+          "tutorial_structure": null
+        }
+      }
+    },
+    {
+      "topic": "stepping back from a project you maintained for years",
+      "register": "reflection",
+      "conditions": {
+        "skill": {
+          "condition": "skill",
+          "essay": "I maintained a project for six years. Not full time, not even close, but steadily: nights, weekends, the occasional lunch break when a bug report showed up that couldn't wait until the weekend. I started it because I needed a tool that didn't exist yet, and by the time I stepped back, other people needed it too. That's usually how these things go.\n\nThe decision to stop didn't arrive all at once. It built up over maybe a year, in small moments that individually meant nothing. I'd open the issue tracker and feel my shoulders tense before I'd even read the first line. I'd see a pull request from someone I didn't recognize and think, with something like dread, \"now I have to understand someone else's code before I can sleep tonight.\" None of that is dramatic. It's just tired.\n\nI want to be honest about what made it hard to leave, because I don't think it was love for the project, not by the end. It was guilt. There were maybe forty open issues, a handful of people who depended on the thing for actual work, and a nagging sense that if I walked away, I'd be walking away from them too. I kept picturing someone hitting a bug at 2am, filing a report, and getting silence. I know what that silence feels like from the other side. I didn't want to be the one causing it.\n\nWhat actually got me unstuck was writing down, plainly, what I was and wasn't willing to keep doing. I wasn't willing to keep triaging issues every week. I was willing to review a pull request someone else had already scoped and tested. That's a narrower job, and a much smaller one, and naming it made the whole thing feel possible instead of all-or-nothing.\n\nSo I wrote a post. I explained where things stood, said I was stepping back from day-to-day maintenance, and asked if anyone wanted to take it further. Two people replied within a week. One of them is still running the project now, three years later, and it looks almost nothing like what I left behind, which is exactly what I'd hoped for and also, if I'm being honest, a little strange to see.\n\nI still get pinged occasionally, usually by someone who found an old blog post and assumes I'm still the person to ask. I answer when I can. Mostly I redirect them, and that's fine. It doesn't sting the way I thought it would.\n\nI don't think there's a clean lesson in this, other than that maintaining something for years and choosing to stop are two different skills, and nobody really teaches you the second one. You just have to notice you need it, and then do it slowly, out loud, in front of the people who are counting on you.",
+          "stylometric_overall": 0.6276680008450856,
+          "stylometric": {
+            "overall": 0.6276680008450856,
+            "function_word_similarity": 0.8110744055309356,
+            "scalar_similarity": 0.44426159615923555,
+            "scalar_closeness": {
+              "avg_sentence_len": 0.9483513069160795,
+              "sentence_len_cv": 0.9874890695588968,
+              "avg_word_len": 0.9649975037298684,
+              "mattr": 0.9528724110159512,
+              "flesch": 0.8876263368199931,
+              "comma_rate": 0.913701810330483,
+              "semicolon_rate": 7.736429274984857e-10,
+              "colon_rate": 0.2440926249807145,
+              "dash_rate": 1.0,
+              "question_rate": 1.3538750121000476e-09,
+              "exclaim_rate": 6.769375060500238e-10,
+              "paren_rate": 2.166200552267128e-10,
+              "contraction_rate": 0.3943576637967351,
+              "first_person_rate": 0.6719333663269116,
+              "second_person_rate": 0.47748889600644273
+            }
+          },
+          "judge_overall": 4,
+          "essayist_tells": 3,
+          "judge": {
+            "tone": 4,
+            "sentence_rhythm": 4,
+            "vocabulary": 5,
+            "punctuation_habits": 5,
+            "essayist_tells": 3,
+            "overall": 4,
+            "rationale": "The candidate is a reflective literary memoir with crafted fragments (\"It's just tired.\"), an aphoristic closing meditation, and quoted interior thoughts, whereas Kattni writes plainly and procedurally in blunt declaratives, narrating concrete steps and outcomes with parenthetical asides and ending on practical next-steps rather than lyrical resolution."
+          },
+          "tutorial_structure": null
+        },
+        "baseline_samples": {
+          "condition": "baseline_samples",
+          "essay": "I stepped back from a project I had maintained for six years this spring, and it has taken me until now to be able to write about it without immediately wanting to go check if anything broke while I wasn't looking. That instinct alone tells you something about how deep this kind of thing gets into you.\n\nWhen you maintain something for that long, it stops being a repository and starts being a relationship. You know its weird corners. You know which issue labels people misuse and which contributors always show up with a well-formed pull request on the first try. You know, without checking, roughly how long a release takes because you've done it enough times that your hands remember the steps even when your brain has stopped consciously tracking them. Stepping away from that isn't like finishing a task. There's no merge button for it. It's more like moving out of a house you've lived in for years: the walls are still standing, someone else is going to sleep in your old room, and you have to decide what you're allowed to still care about.\n\nI want to be honest that the hardest part wasn't the technical handoff. Documentation, access, a list of \"here's what I know that isn't written down anywhere\" \u2014 that part is mechanical, and if you're any good at maintaining a project, you're already decent at writing things down for people who aren't you. The hard part was realizing that my identity had, without my really noticing it happen, quietly wrapped itself around being the person who took care of this thing. People asked me questions about it in hallways at conferences. I answered issues in my sleep, sometimes literally, phone propped on a pillow. When I stepped back, I had to sit with the question of who I was without that particular role, and that is a considerably less comfortable question than \"did the CI pass.\"\n\nWhat helped, and what I'd offer to anyone else facing this, is giving yourself explicit permission to grieve it a little. Not the project, which is presumably fine and being cared for by someone else now, but the version of you that existed in relation to it. That grief is real even when the decision to step back was entirely your own and entirely the right one. I made the decision because I wanted to, because there were other things I wanted my attention for, and it was still a loss. Both things can be true at once. I don't think I fully believed that until I was in it.\n\nI also want to say, clearly, that stepping back is not abandonment, and it does not erase the years you put in. The commits are still there. The people you helped are still helped. The thing you built continues existing because you built it well enough to survive you leaving it. That's not nothing. That might, actually, be the entire point.",
+          "stylometric_overall": 0.6196801582895016,
+          "stylometric": {
+            "overall": 0.6196801582895016,
+            "function_word_similarity": 0.8718669412022031,
+            "scalar_similarity": 0.36749337537680016,
+            "scalar_closeness": {
+              "avg_sentence_len": 0.9825538127105826,
+              "sentence_len_cv": 0.96502739295335,
+              "avg_word_len": 0.991923422064432,
+              "mattr": 0.9598177320256341,
+              "flesch": 0.9514351194684674,
+              "comma_rate": 0.954819940935732,
+              "semicolon_rate": 7.736429274984857e-10,
+              "colon_rate": 0.2371241229525224,
+              "dash_rate": 4.940000630782038e-10,
+              "question_rate": 1.3538750121000476e-09,
+              "exclaim_rate": 6.769375060500238e-10,
+              "paren_rate": 2.166200552267128e-10,
+              "contraction_rate": 0.5346681999699391,
+              "first_person_rate": 0.7991513294521808,
+              "second_person_rate": 0.8191877895912193
+            }
+          },
+          "judge_overall": 3,
+          "essayist_tells": 2,
+          "judge": {
+            "tone": 4,
+            "sentence_rhythm": 4,
+            "vocabulary": 5,
+            "punctuation_habits": 5,
+            "essayist_tells": 2,
+            "overall": 3,
+            "rationale": "The candidate is a polished reflective essay full of metaphor, cadenced repetition, and an aphoristic closing line (\"That might, actually, be the entire point.\"), where Kattni writes as a plain first-person practitioner narrating concrete steps, links, and outcomes with straightforward declarative sentences."
+          },
+          "tutorial_structure": null
+        },
+        "baseline_naive": {
+          "condition": "baseline_naive",
+          "essay": "There's a particular kind of tiredness that doesn't show up in the commit log. It's not burnout, exactly \u2014 burnout implies something dramatic, a flameout you can point to. This is quieter. It's the moment you open an issue tracker you've opened four thousand times before and realize you already know, before you click in, roughly what it's going to say. You've become the project's institutional memory, and institutional memory is exhausting to carry alone.\n\nI maintained something for years. Long enough that I stopped remembering a version of myself who didn't. Long enough that \"who owns this\" had, for a while, only one honest answer. There's a strange intimacy to that kind of ownership \u2014 you know where the bodies are buried, which config flag exists only because someone's production system broke in 2019 and never got fixed properly, which test is flaky in a way nobody's found the root cause for but everyone's learned to just rerun. You carry that knowledge the way you carry a key to a building. Useful. Also, eventually, a weight.\n\nStepping back from that isn't a single decision. It's a hundred small ones that finally add up to a sentence you say out loud. I want to be careful here, because there's a version of this essay that turns into a farewell post \u2014 thanking contributors, listing accomplishments, performing closure for an audience. That's not what I want to write. What I actually want to say is smaller and less flattering: I stayed a while past the point where staying was good for the project. Not because I was indispensable. Because I'd confused my identity with my role. Letting go meant admitting the project would be fine \u2014 maybe better \u2014 without me as its bottleneck.\n\nDocumentation is where this becomes concrete. You find out, in the act of writing the handoff doc, how much of what you knew was never written down anywhere. Not because you were hoarding it, but because knowledge accreted quietly, one debugging session at a time, and there was never a natural moment to formalize it. Writing it all down at the end feels like an apology. It probably is one, a little.\n\nWhat surprised me wasn't the sadness \u2014 I expected that, and it came, right on schedule, the day I merged my last PR as maintainer. What surprised me was the relief underneath it, present from the very start and slow to admit to myself. Not relief at being rid of the project. Relief at no longer being the only person whose attention it required to keep functioning. A good project, tended well enough for long enough, should be able to survive its founder getting tired. If it can't, that's not a compliment to the founder. That's a bus factor problem you didn't fix in time.\n\nI don't think there's a clean lesson here, the kind you'd put in a blog post title. Just this: the work of stepping back is itself a kind of maintenance. Maybe the last kind. Do it with the same care you'd give a migration \u2014 slowly, documented, with someone else's hands on the wheel before you take yours off.",
+          "stylometric_overall": 0.6421205486825129,
+          "stylometric": {
+            "overall": 0.6421205486825129,
+            "function_word_similarity": 0.90546384796204,
+            "scalar_similarity": 0.3787772494029857,
+            "scalar_closeness": {
+              "avg_sentence_len": 0.900544065962104,
+              "sentence_len_cv": 0.9895746434658019,
+              "avg_word_len": 0.9951697192135253,
+              "mattr": 0.9664742691421219,
+              "flesch": 0.9595578836518303,
+              "comma_rate": 0.9808644938103293,
+              "semicolon_rate": 7.736429274984857e-10,
+              "colon_rate": 0.4064737064629097,
+              "dash_rate": 7.442857441475326e-11,
+              "question_rate": 1.3538750121000476e-09,
+              "exclaim_rate": 6.769375060500238e-10,
+              "paren_rate": 2.166200552267128e-10,
+              "contraction_rate": 0.36051854816142614,
+              "first_person_rate": 0.9234757688464955,
+              "second_person_rate": 0.9964758787967687
+            }
+          },
+          "judge_overall": 3,
+          "essayist_tells": 2,
+          "judge": {
+            "tone": 3,
+            "sentence_rhythm": 3,
+            "vocabulary": 4,
+            "punctuation_habits": 3,
+            "essayist_tells": 2,
+            "overall": 3,
+            "rationale": "The candidate is a literary, aphoristic meditation full of em-dash asides, fragments, and a lyrical closing image, whereas Kattni writes plainly and procedurally in the first person, narrating concrete steps and outcomes with straightforward sentences and few rhetorical flourishes."
+          },
+          "tutorial_structure": null
+        }
+      }
+    },
+    {
+      "topic": "the small tools that quietly changed how I work",
+      "register": "personal",
+      "conditions": {
+        "skill": {
+          "condition": "skill",
+          "essay": "I didn't set out to change how I work. Most of these tools showed up because something annoying happened often enough that I finally looked for a way around it.\n\nThe clipboard manager is the one I notice the most, mostly because I notice its absence on other people's machines. I copy something, and then a minute later I copy something else, and the first thing is gone; I used to just accept that as how computers work. Now I hit a shortcut and get the last several dozen things I've copied, in order, searchable. It sounds small. It is small. But I probably use it thirty times a day, and every one of those thirty times used to be a tiny moment of \"wait, what was that again\" followed by going back to find it. That adds up in a way that's hard to see in the moment and obvious in hindsight.\n\nText expansion did something similar for the sentences I type constantly. My email, my mailing address, a boilerplate response I give when someone asks about a project's license. I type three or four characters and the rest fills in. I resisted this for a long time because it felt like overkill, like something you'd set up if you were the kind of person who optimizes everything (I am not that person, or at least I didn't think I was). Then I timed myself typing my own address for the tenth time in a week and set it up that afternoon.\n\nFormat-on-save is the one that changed how I think about mistakes, not just how I fix them. Every time I save a file, my editor quietly fixes the spacing, the quote style, the trailing commas, whatever I got sloppy about while I was actually thinking about the problem. I stopped holding a second thread of attention open for formatting while I coded. That thread is now free for the actual work. I didn't realize how much of my attention it had been taking until it was gone.\n\nNone of these are dramatic. None of them are the kind of thing you'd put in a portfolio or explain in an interview. They're the opposite of that, actually, they're the stuff that disappears into the background so completely that I sometimes forget I set them up at all, until I sit down at a machine that doesn't have them and feel the friction come back.\n\nThat's probably the actual thread here. The tools that changed how I work the most weren't the impressive ones. They were the ones that removed a small, repeated cost I'd stopped noticing I was paying. A few seconds here, a bit of attention there, dozens of times a day, for years. I don't think there's a lesson in this beyond paying attention to your own friction long enough to actually fix it, rather than just getting used to it.\n\nI'm sure there are more of these I haven't found yet. That's usually how it goes, I don't go looking for them, I just get annoyed enough one day and finally do something about it.",
+          "stylometric_overall": 0.6921920462814963,
+          "stylometric": {
+            "overall": 0.6921920462814963,
+            "function_word_similarity": 0.7747866213568639,
+            "scalar_similarity": 0.6095974712061287,
+            "scalar_closeness": {
+              "avg_sentence_len": 0.9907157557743284,
+              "sentence_len_cv": 0.9219672976595599,
+              "avg_word_len": 0.9643722970653883,
+              "mattr": 0.9799558726078296,
+              "flesch": 0.939049754681692,
+              "comma_rate": 0.9086086903222277,
+              "semicolon_rate": 0.8057776063232863,
+              "colon_rate": 6.644784722453778e-11,
+              "dash_rate": 1.0,
+              "question_rate": 1.3538750121000476e-09,
+              "exclaim_rate": 6.769375060500238e-10,
+              "paren_rate": 0.9070809430200859,
+              "contraction_rate": 0.45411819878914816,
+              "first_person_rate": 0.547916806324309,
+              "second_person_rate": 0.25112450732804303
+            }
+          },
+          "judge_overall": 4,
+          "essayist_tells": 3,
+          "judge": {
+            "tone": 4,
+            "sentence_rhythm": 4,
+            "vocabulary": 5,
+            "punctuation_habits": 4,
+            "essayist_tells": 3,
+            "overall": 4,
+            "rationale": "The candidate is a reflective, literary personal essay with rhythmic fragments, parenthetical asides, em-dash-free but comma-spliced cadence, and an aphoristic thematic close, whereas Kattni writes plainly and procedurally in first person with concrete step-by-step reporting, short declarative sentences, and unadorned wrap-ups."
+          },
+          "tutorial_structure": null
+        },
+        "baseline_samples": {
+          "condition": "baseline_samples",
+          "essay": "It's funny how rarely the big tools are the ones that actually change how you work. I've adopted plenty of flashy things over the years that promised to transform my workflow and then quietly disappeared a month later, replaced by whatever came next. The tools that actually stuck were almost all small. Unglamorous. The kind of thing you'd never think to write a blog post about, until you notice you've been leaning on it every single day for years.\n\nTake a text expander. I resisted this one for a long time, mostly because it felt like overkill for someone who wasn't typing the same boilerplate hundreds of times a day. Except, it turns out, I was. My email signature, a handful of stock responses to recurring questions, the URL to my own site that I somehow still can never remember. A few keystrokes now expand into all of it. It's such a small thing, but the amount of friction it removed from my day is genuinely hard to overstate.\n\nFirefox Containers did something similar, though I've written about that one already. It's not a new tool, exactly, just a small feature tucked inside a browser I already used. But it quietly solved a problem I'd been working around for years, logging in and out of accounts, keeping tabs mentally sorted by whose inbox they belonged to. Once I set it up, I stopped thinking about it entirely, which is sort of the point. The best tools disappear into the workflow. You only notice them in their absence.\n\nMarkdown belongs on this list too, obviously. I've written a whole tutorial about it, so I won't repeat myself here, except to say that the actual shift wasn't learning the syntax. It was realising I could write in it everywhere, Discord, GitHub, my own blog, and stop context-switching between \"how do I format this\" and just writing. Small tool, in the sense that it's barely a tool at all. Enormous effect on how much friction there is between having a thought and getting it down.\n\nAnd then there are the ones that are almost embarrassingly small. A script Jeff wrote for me that parsed Git history to figure out where content had moved. It probably took him an hour and a half, tops, and it did something I would have spent days doing manually, and likely gotten wrong. `tox`, which I resisted for ages because it felt like unnecessary ceremony, until I realised it was the difference between \"it works on my machine\" and \"it works, full stop.\" None of these are exciting. None of them are the kind of thing anyone puts on a highlight reel.\n\nI think that's the actual lesson, if there is one. The tools that change how you work aren't usually the ones you go looking for. They're the ones that quietly remove one small piece of friction, and then keep removing it, every day, until you can't remember doing the task any other way. You don't notice the shift while it's happening. You just notice, one day, that you've stopped thinking about the problem at all.",
+          "stylometric_overall": 0.6466012646178445,
+          "stylometric": {
+            "overall": 0.6466012646178445,
+            "function_word_similarity": 0.8445849568020238,
+            "scalar_similarity": 0.4486175724336651,
+            "scalar_closeness": {
+              "avg_sentence_len": 0.9418624272853681,
+              "sentence_len_cv": 0.8885706231678673,
+              "avg_word_len": 0.9916235237489073,
+              "mattr": 0.9426330926902453,
+              "flesch": 0.9508723165555136,
+              "comma_rate": 0.9402108200067041,
+              "semicolon_rate": 7.736429274984857e-10,
+              "colon_rate": 6.644784722453778e-11,
+              "dash_rate": 1.0,
+              "question_rate": 1.3538750121000476e-09,
+              "exclaim_rate": 6.769375060500238e-10,
+              "paren_rate": 2.166200552267128e-10,
+              "contraction_rate": 0.46939784916899596,
+              "first_person_rate": 0.8455728968427054,
+              "second_person_rate": 0.7323222292247038
+            }
+          },
+          "judge_overall": 3,
+          "essayist_tells": 2,
+          "judge": {
+            "tone": 4,
+            "sentence_rhythm": 3,
+            "vocabulary": 5,
+            "punctuation_habits": 4,
+            "essayist_tells": 2,
+            "overall": 3,
+            "rationale": "The candidate adopts a reflective, lyrical essayist voice with sentence fragments (\"Unglamorous.\"), aphoristic lines (\"The best tools disappear into the workflow\"), and a thematic closing meditation, whereas Kattni writes as a plain first-person practitioner reporting concrete steps and outcomes in straightforward declaratives with heavy comma-clause hedging and literal wrap-ups."
+          },
+          "tutorial_structure": null
+        },
+        "baseline_naive": {
+          "condition": "baseline_naive",
+          "essay": "There's a folder on my machine called `bin`, and it's older than most of my relationships. It's full of things nobody would call software\u2014a five-line script that renames screenshots, a wrapper around `curl` that formats API responses the way my eyes actually parse them, a function that opens the right editor at the right line number from a stack trace. None of it is impressive. None of it would survive a code review. But I've come to believe these are the tools that actually shaped how I work, far more than any framework or IDE I've adopted with fanfare.\n\nThe big tools get the credit. You switch languages, you switch editors, you write a blog post about it. But the small ones arrive quietly, usually because something annoyed you exactly once too often, and then they just sit there, invisibly saving you four seconds a dozen times a day, for years. I didn't decide to build a personal toolkit. I noticed, one day, that I had one\u2014that I'd been quietly automating my own irritation for a decade without ever framing it as a project.\n\nThe first one I remember writing was a script to strip trailing whitespace and normalize line endings before I committed anything. I wrote it after a diff review where half the \"changes\" were invisible characters, and a reviewer spent ten minutes trying to find the actual edit buried in noise. That script taught me something that's stuck with me since: the tools worth building aren't the ones that make you faster at the interesting part of the work. They're the ones that remove the boring part so completely you stop budgeting time for it at all.\n\nThat's the real difference between a small tool and a big one. A big tool changes what you're capable of. A small tool changes what you have to think about. And thinking is the scarce resource. Every time I don't have to remember the flags for a command, or manually copy a value between two systems, or reformat a JSON blob by eye, that's a little bit of attention that gets to go somewhere else\u2014usually toward the actual problem I'm supposed to be solving, which is rarely \"did I type this command correctly.\"\n\nWriting docs did this to me too, in a roundabout way. I built a tiny linter that flags passive voice and unnecessarily long sentences in my drafts, not because I need a robot to tell me how to write, but because catching it automatically means I don't have to hold \"watch for passive voice\" as a live thought while I'm also holding \"explain this concept clearly\" and \"don't bury the lede.\" Offloading the mechanical check frees up the part of my brain that's actually good at the judgment call.\n\nNone of these tools are things I'd put on a resume. Most of them are under twenty lines. But if you added up the friction they've removed\u2014the context switches avoided, the typos never made, the small decisions I no longer have to make consciously\u2014it probably outweighs any single \"real\" project I've shipped. The big rewrites get the retrospective. The little script that fixes your clipboard formatting gets used every day for six years and never gets a changelog entry. I think that's backwards, honestly. I think the small tools are the ones actually worth writing home about.",
+          "stylometric_overall": 0.6203371901888879,
+          "stylometric": {
+            "overall": 0.6203371901888879,
+            "function_word_similarity": 0.8941998649774378,
+            "scalar_similarity": 0.3464745154003381,
+            "scalar_closeness": {
+              "avg_sentence_len": 0.952944246062511,
+              "sentence_len_cv": 0.9229042467525771,
+              "avg_word_len": 0.9977834779701513,
+              "mattr": 0.9592353492921625,
+              "flesch": 0.9792979135462007,
+              "comma_rate": 0.8115262640973736,
+              "semicolon_rate": 7.736429274984857e-10,
+              "colon_rate": 0.211130604335384,
+              "dash_rate": 1.1260004040281046e-10,
+              "question_rate": 1.3538750121000476e-09,
+              "exclaim_rate": 6.769375060500238e-10,
+              "paren_rate": 2.166200552267128e-10,
+              "contraction_rate": 0.44874944346376433,
+              "first_person_rate": 0.8005483966733324,
+              "second_person_rate": 0.7992856536719981
+            }
+          },
+          "judge_overall": 3,
+          "essayist_tells": 2,
+          "judge": {
+            "tone": 3,
+            "sentence_rhythm": 3,
+            "vocabulary": 4,
+            "punctuation_habits": 4,
+            "essayist_tells": 2,
+            "overall": 3,
+            "rationale": "The candidate is a polished reflective essay full of aphorisms (\"A big tool changes what you're capable of. A small tool changes what you have to think about.\"), em-dash asides, and a lyrical epigrammatic close, whereas Kattni writes plainly and procedurally in first person, narrating concrete steps and outcomes with straightforward declaratives and frequent \"Done.\"-style plainness rather than crafted rhetoric."
+          },
+          "tutorial_structure": null
+        }
+      }
+    }
+  ]
+}

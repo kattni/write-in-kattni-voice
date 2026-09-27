@@ -1,0 +1,52 @@
+Reference voice: 6 sample(s) — 2024_01_10_firefox-is-enough-for-me.md, 2024_03_07_enough-markdown-to-get-you-by-in-most-cases.md, 2024_05_15_python-powered-eink-name-badge.md, 2025_02_23_my-first-major-open-source-project-contribution.md, 2025_06_02_post-conference-depression-is-real-and-you-are-not-alone.md, 2025_08_31_mkdocs-po-i18n-translations-with-mkdocs-and-read-the-docs.md
+Conditions: skill, baseline_samples, baseline_naive
+Topics: 5   Generation: claude-sonnet-5   Judge: claude-opus-5   Repeats: 3
+
+======================================================================
+TOPIC: writing your first test with pytest  [tutorial]
+======================================================================
+  generating [skill] x3 ...
+    stylometric 0.724±0.035   judge 4.00±0.00/10   essayist_tells 3.00±0.00/10   tutorial_structure 0.67±0.12
+  generating [baseline_samples] x3 ...
+    stylometric 0.707±0.020   judge 5.33±0.94/10   essayist_tells 4.33±0.94/10   tutorial_structure 0.75±0.20
+  generating [baseline_naive] x3 ...
+    stylometric 0.604±0.042   judge 3.00±0.00/10   essayist_tells 2.00±0.00/10   tutorial_structure 0.42±0.12
+    skill vs baseline_samples (bar: match): stylometric MATCH (0.724 vs 0.707), judge behind (4.00 vs 5.33)
+    skill vs baseline_naive (bar: beat): stylometric WIN (0.724 vs 0.604), judge WIN (4.00 vs 3.00)
+
+======================================================================
+TOPIC: why good error messages are worth the effort  [opinion]
+======================================================================
+  generating [skill] x3 ...
+    stylometric 0.772±0.026   judge 4.00±0.00/10   essayist_tells 3.00±0.00/10
+  generating [baseline_samples] x3 ...
+    stylometric 0.715±0.023   judge 4.33±0.47/10   essayist_tells 3.33±0.47/10
+  generating [baseline_naive] x3 ...
+    stylometric 0.648±0.008   judge 3.00±0.00/10   essayist_tells 2.00±0.00/10
+    skill vs baseline_samples (bar: match): stylometric MATCH (0.772 vs 0.715), judge MATCH (4.00 vs 4.33)
+    skill vs baseline_naive (bar: beat): stylometric WIN (0.772 vs 0.648), judge WIN (4.00 vs 3.00)
+
+======================================================================
+TOPIC: the bug that took me three days to find  [narrative]
+======================================================================
+  generating [skill] x3 ...
+    stylometric 0.694±0.029   judge 4.67±0.94/10   essayist_tells 4.00±0.82/10
+  generating [baseline_samples] x3 ...
+    stylometric 0.656±0.015   judge 3.33±0.47/10   essayist_tells 2.33±0.47/10
+  generating [baseline_naive] x3 ...
+    stylometric 0.630±0.014   judge 3.00±0.00/10   essayist_tells 2.00±0.00/10
+    skill vs baseline_samples (bar: match): stylometric MATCH (0.694 vs 0.656), judge MATCH (4.67 vs 3.33)
+    skill vs baseline_naive (bar: beat): stylometric WIN (0.694 vs 0.630), judge WIN (4.67 vs 3.00)
+
+======================================================================
+TOPIC: stepping back from a project you maintained for years  [reflection]
+======================================================================
+  generating [skill] x3 ...
+    stylometric 0.664±0.032   judge 3.67±0.47/10   essayist_tells 2.67±0.94/10
+  generating [baseline_samples] x3 ...
+
+Model call failed: `claude` exited 1: {"is_error":true,"duration_api_ms":0,"num_turns":1,"stop_reason":"stop_sequence","session_id":"a79699bc-961f-4d87-b72c-c7505372f33c","total_cost_usd":0,"usage":{"output_tokens_details":{"thinking_tokens":0},"input_tokens":0,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":0,"server_tool_use":{"web_search_requests":0,"web_fetch_requests":0},"service_tier":"standard","cache_creation":{"ephemeral_1h_input_tokens":0,"ephemeral_5m_input_tokens":0},"inference_geo":"","iterations":[],"speed":"standard"},"modelUsage":{},"permission_denials":[],"terminal_reason":"api_error","fast_mode_state":"off","fast_mode_disabled_reason":"sdk_opt_in_required","subtype":"success","api_error_status":429,"result":"You've hit your session limit · resets 3:40am (America/Detroit)","type":"result","duration_ms":1991,"uuid":"5d8e61e0-a0ef-46ec-8e57-859e38ed3580"}
+
+This eval reaches Claude through the `claude` CLI (no API key). Make sure the CLI is signed in for non-interactive use:
+  - run `claude -p "hello"` in your terminal; if it says 'Not logged in', run `claude setup-token` (Pro/Max) or `claude login`.
+Then re-run this eval.

@@ -1,0 +1,84 @@
+Reference voice: 6 sample(s) — 2024_01_10_firefox-is-enough-for-me.md, 2024_03_07_enough-markdown-to-get-you-by-in-most-cases.md, 2024_05_15_python-powered-eink-name-badge.md, 2025_02_23_my-first-major-open-source-project-contribution.md, 2025_06_02_post-conference-depression-is-real-and-you-are-not-alone.md, 2025_08_31_mkdocs-po-i18n-translations-with-mkdocs-and-read-the-docs.md
+Conditions: skill, baseline_samples, baseline_naive
+Topics: 5   Generation: claude-sonnet-5   Judge: claude-opus-5   Repeats: 3
+
+======================================================================
+TOPIC: writing your first test with pytest  [tutorial]
+======================================================================
+  generating [skill] x3 ...
+    stylometric 0.735±0.010   judge 4.00±0.00/10   essayist_tells 3.67±0.47/10   tutorial_structure 0.75±0.20
+  generating [baseline_samples] x3 ...
+    stylometric 0.709±0.004   judge 4.33±1.25/10   essayist_tells 3.00±0.82/10   tutorial_structure 0.75±0.20
+  generating [baseline_naive] x3 ...
+    stylometric 0.669±0.004   judge 3.33±0.47/10   essayist_tells 2.33±0.47/10   tutorial_structure 0.50±0.20
+    skill vs baseline_samples (bar: match): stylometric MATCH (0.735 vs 0.709), judge MATCH (4.00 vs 4.33)
+    skill vs baseline_naive (bar: beat): stylometric WIN (0.735 vs 0.669), judge WIN (4.00 vs 3.33)
+
+======================================================================
+TOPIC: why good error messages are worth the effort  [opinion]
+======================================================================
+  generating [skill] x3 ...
+    stylometric 0.743±0.037   judge 4.00±0.00/10   essayist_tells 3.00±0.00/10
+  generating [baseline_samples] x3 ...
+    stylometric 0.684±0.041   judge 4.00±0.00/10   essayist_tells 3.00±0.00/10
+  generating [baseline_naive] x3 ...
+    stylometric 0.662±0.020   judge 3.00±0.00/10   essayist_tells 2.00±0.00/10
+    skill vs baseline_samples (bar: match): stylometric MATCH (0.743 vs 0.684), judge MATCH (4.00 vs 4.00)
+    skill vs baseline_naive (bar: beat): stylometric WIN (0.743 vs 0.662), judge WIN (4.00 vs 3.00)
+
+======================================================================
+TOPIC: the bug that took me three days to find  [narrative]
+======================================================================
+  generating [skill] x3 ...
+    stylometric 0.706±0.053   judge 4.33±0.47/10   essayist_tells 3.67±0.47/10
+  generating [baseline_samples] x3 ...
+    stylometric 0.707±0.032   judge 3.67±0.47/10   essayist_tells 2.67±0.47/10
+  generating [baseline_naive] x3 ...
+    stylometric 0.660±0.023   judge 3.00±0.00/10   essayist_tells 2.00±0.00/10
+    skill vs baseline_samples (bar: match): stylometric MATCH (0.706 vs 0.707), judge MATCH (4.33 vs 3.67)
+    skill vs baseline_naive (bar: beat): stylometric WIN (0.706 vs 0.660), judge WIN (4.33 vs 3.00)
+
+======================================================================
+TOPIC: stepping back from a project you maintained for years  [reflection]
+======================================================================
+  generating [skill] x3 ...
+    stylometric 0.665±0.014   judge 3.67±0.47/10   essayist_tells 2.67±0.47/10
+  generating [baseline_samples] x3 ...
+    stylometric 0.675±0.009   judge 3.00±0.00/10   essayist_tells 2.00±0.00/10
+  generating [baseline_naive] x3 ...
+    stylometric 0.620±0.010   judge 2.67±0.47/10   essayist_tells 1.67±0.47/10
+    skill vs baseline_samples (bar: match): stylometric MATCH (0.665 vs 0.675), judge MATCH (3.67 vs 3.00)
+    skill vs baseline_naive (bar: beat): stylometric WIN (0.665 vs 0.620), judge WIN (3.67 vs 2.67)
+
+======================================================================
+TOPIC: the small tools that quietly changed how I work  [personal]
+======================================================================
+  generating [skill] x3 ...
+    stylometric 0.627±0.007   judge 4.00±0.00/10   essayist_tells 3.33±0.47/10
+  generating [baseline_samples] x3 ...
+    stylometric 0.659±0.025   judge 3.33±0.47/10   essayist_tells 2.33±0.47/10
+  generating [baseline_naive] x3 ...
+    stylometric 0.601±0.015   judge 3.00±0.00/10   essayist_tells 2.00±0.00/10
+    skill vs baseline_samples (bar: match): stylometric behind (0.627 vs 0.659), judge MATCH (4.00 vs 3.33)
+    skill vs baseline_naive (bar: beat): stylometric WIN (0.627 vs 0.601), judge WIN (4.00 vs 3.00)
+
+======================================================================
+AGGREGATE over 5 topic(s)
+======================================================================
+  condition           stylo (mean)  judge (mean)  essayist (mean)
+  skill                      0.695          4.00             3.27
+  baseline_samples           0.687          3.67             2.60
+  baseline_naive             0.642          3.00             2.00
+
+  skill matches baseline_samples:  stylometric 4/5 topics,  judge 5/5 topics
+    (bar is 'match', not 'beat': baseline_samples was handed the exact
+     posts the judge scores against — see README.)
+
+  skill beats baseline_naive:  stylometric 5/5 topics,  judge 5/5 topics
+
+  tutorial-structure (mean over 1 tutorial topic(s), 0..1):
+    skill               0.75
+    baseline_samples    0.75
+    baseline_naive      0.50
+
+Wrote write-in-kattni-voice/results.json

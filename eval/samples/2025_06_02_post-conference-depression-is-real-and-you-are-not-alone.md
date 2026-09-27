@@ -1,0 +1,20 @@
+Title: Post-Conference Depression Is Real, and You Are Not Alone
+Date: 2025-6-2 20:40
+Author: Kattni
+Tags: Personal, Open Source, Conferences, Community
+Slug: post-conference-depression-is-real-and-you-are-not-alone
+Summary: In which I explain that sadness you feel after so much awesome
+HideTOC: True
+Status: published
+
+At PyCon US 2025, on the last day of the sprints which round out the entire event, the last person I would have expected to ask, posed the following question. "Does anyone else, after you head home from the conference, feel... down?" I immediately blurted out through my hand and a mouthful of pizza, "Who doesn't!" Somewhat surprised, they replied, "Really?" My mind sort of skipped a beat. This was someone I would call a professional conference goer, and the idea that they were unaware of this, and had been feeling alone in it for as long as I imagine they must have, was heartbreaking. I proceeded to explain. As I did so, I realised, if _they_ were unaware, so too must be many others. For that reason, I decided to write this post explaining what happens, why, and what you can do with it.
+
+It turns out spending time surrounded by amazing people causes a physiological high, resulting from increased production of hormones and other brain chemicals. Anytime your brain is overstimulated for a period of time, it begins to assume that it has produced enough, and stops producing further for a period of time. Initially, this lack of production isn't noticeable, because you are still existing on the increased amounts generated in the previous days. However, once you are outside the situation, your brain eventually works through the excess supplies, and you are left with a deficiency that you will almost certainly begin to feel. This manifests as a temporary depressive state, or post-conference "crash". The timing on this is different for everyone, but it is often within two to three days of leaving the event.
+
+This is all a technical way of explaining: the sadness you feel after leaving a conference is something felt by most people, and you are not at fault for or alone in this experience. It even has a name: con-drop. 
+
+There are plenty of ways to help counter it, but unfortunately, they are all quite personal. I am happy to share a couple of things that I think have helped me this year. One, I made a concerted (and so-far-successful) effort to keep in touch with the new friends I made. Two, I continued working on contributing to the open source project that I had been working with at the sprints. A huge part of what leads to me crashing is being abruptly cut off from near constant interaction with friends for ten days straight. Maintaining those connections, even remotely, has been immensely helpful. Having a project to focus on has also been pretty significant, as it left me with less time to give the sadness as much consideration as I might have otherwise. 
+
+Figuring out what might work to help you can begin with identifying what part of the post-conference situation led to you feeling this way. Do you miss the people? Do you miss the learning experiences? Do you miss having something to do each day? These are only a few of a vast number of variables that may be contributing to it. If you can figure out any part of the cause, you may be able to identify your own countermeasures. Reach out to a friend to chat. Pick a topic to learn. Choose something to keep yourself busy for the day. Countering even a small part of it can make a huge difference.
+
+All of that said, it is entirely ok to simply ride it out. You are not required to figure out why, or to try to do anything about it. Give it some time. It is, as I said, temporary. Your brain will wise up and realise what happened, and bring you back to your usual state. Until then, remember are that this is something many of us deal with, and it is essentially out of your control. The most important things you can do are to give yourself some grace, and know that you'll be back to yourself soon enough.
