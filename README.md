@@ -14,20 +14,6 @@ I made it for my own use. I'm sharing it because building it taught me a lot abo
 | `writing-examples/` | A larger set of my writing that I drew from while building the skill. |
 | `docs/superpowers/` | The design spec and plans from building the skill. I used [Superpowers](https://github.com/obra/superpowers) for that part. |
 
-## Installing the skill
-
-Claude Code looks for personal skills in `~/.claude/skills/`. Clone this repo, then either copy the skill folder in or symlink it. I symlink mine, so any change I make in the repo shows up right away.
-
-```bash
-git clone https://github.com/kattni/write-in-kattni-voice.git
-```
-
-```bash
-ln -s "$PWD/write-in-kattni-voice/write-in-kattni-voice" ~/.claude/skills/write-in-kattni-voice
-```
-
-Once it's installed, Claude picks it up when you ask for writing in my voice. You can also call it directly with `/write-in-kattni-voice`, followed by what you want written.
-
 ## How well it works
 
 It does better than asking for my voice without it, but it isn't all the way there yet.
