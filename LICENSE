@@ -19,3 +19,20 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+---
+
+Writing samples excluded
+
+The MIT License above does not apply to the writing samples in this
+repository. These are:
+
+- Everything in `writing-examples/`
+- Everything in `write-in-kattni-voice/examples/`, except `README.md` and
+  `calibration.md`
+- Everything in `eval/samples/`, except `README.md`
+
+These samples are included only as reference material for the skill and the
+eval. No license is granted to copy, modify, or redistribute them. Copyright in
+each sample remains with its original owner: Kattni, or the publication where
+the piece first appeared.

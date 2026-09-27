@@ -42,4 +42,6 @@ The eval only needs Python 3 and the `claude` CLI, signed in. It doesn't need an
 
 ## License
 
-This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+The code and the skill's guidance are licensed under the MIT License. See [LICENSE](LICENSE) for details.
+
+The writing samples are the exception. That's everything in `writing-examples/` and `eval/samples/`, and the samples in `write-in-kattni-voice/examples/` (not `README.md` or `calibration.md`). Those are my own posts and guides, some of which were first published elsewhere, and they're only here so the skill and the eval have something to work from. The MIT License doesn't cover them, so please don't reuse them without asking.
